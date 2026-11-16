@@ -14,10 +14,12 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.angsadev.capybaraonsenpuzzle"
+      "bundleIdentifier": "com.angsadev.capybaraonsenpuzzle",
+      "buildNumber": "1"
     },
     "android": {
       "package": "com.angsadev.capybaraonsenpuzzle",
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#FDF6E9",
         "foregroundImage": "./assets/android-icon-foreground.png",
