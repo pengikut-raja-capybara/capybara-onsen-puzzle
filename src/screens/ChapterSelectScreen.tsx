@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import { CHAPTERS, getLevelsForChapter } from '../data/chapters';
+import { UI_TEXT, getChapterText } from '../i18n/translations';
 import { PlayerProgress, getTotalStars } from '../storage/progress';
 import { CHAPTER_PALETTES, FONTS, PALETTE, RADIUS, SHADOWS } from '../theme';
 import { BackIcon, LockIcon } from '../components/svg/Icons';
@@ -26,9 +27,16 @@ export const ChapterSelectScreen: React.FC<ChapterSelectScreenProps> = ({
 }) => {
   const [selectedChapterId, setSelectedChapterId] = useState<number>(1);
   const totalStars = getTotalStars(progress);
+  const t = UI_TEXT[progress.language];
 
   const selectedChapter =
     CHAPTERS.find((c) => c.id === selectedChapterId) ?? CHAPTERS[0];
+  const chapterText = getChapterText(
+    selectedChapter.id,
+    selectedChapter.title,
+    selectedChapter.subtitle,
+    progress.language
+  );
   const palette = CHAPTER_PALETTES[selectedChapter.id] ?? CHAPTER_PALETTES[1];
   const levels = getLevelsForChapter(selectedChapter.id);
   const chapterUnlocked = totalStars >= selectedChapter.unlockStarsRequired;
@@ -52,7 +60,7 @@ export const ChapterSelectScreen: React.FC<ChapterSelectScreenProps> = ({
             <BackIcon size={22} color={PALETTE.espresso} />
           </Pressable>
 
-          <Text style={styles.heading}>Pilih Chapter</Text>
+          <Text style={styles.heading}>{t.chapterHeading}</Text>
 
           <View style={[styles.starPill, SHADOWS.soft]}>
             <StarSvg filled size={18} />
@@ -105,14 +113,16 @@ export const ChapterSelectScreen: React.FC<ChapterSelectScreenProps> = ({
             SHADOWS.soft,
           ]}
         >
-          <Text style={styles.bannerTitle}>{selectedChapter.title}</Text>
-          <Text style={styles.bannerSub}>{selectedChapter.subtitle}</Text>
+          <Text style={styles.bannerTitle}>{chapterText.title}</Text>
+          <Text style={styles.bannerSub}>{chapterText.subtitle}</Text>
           {!chapterUnlocked && (
             <View style={styles.lockBanner}>
               <LockIcon size={14} color="#7B241C" />
               <Text style={styles.lockText}>
-                Butuh {selectedChapter.unlockStarsRequired} bintang (kurang{' '}
-                {selectedChapter.unlockStarsRequired - totalStars})
+                {t.chapterLockInfo(
+                  selectedChapter.unlockStarsRequired,
+                  selectedChapter.unlockStarsRequired - totalStars
+                )}
               </Text>
             </View>
           )}

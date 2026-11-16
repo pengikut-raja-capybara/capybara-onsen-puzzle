@@ -1,20 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { Modal, Pressable, StyleSheet, Switch, Text, View } from "react-native";
-import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withSequence, withTiming } from "react-native-reanimated";
-import { ALL_LEVELS } from "../data/chapters";
-import { PlayerProgress, getTotalStars } from "../storage/progress";
-import { FONTS, PALETTE, RADIUS, SHADOWS } from "../theme";
-import { CapybaraSvg } from "../components/svg/CapybaraSvg";
-import { InfoIcon, PlayIcon, SettingsIcon } from "../components/svg/Icons";
-import { OnsenSvg, StarSvg } from "../components/svg/TileSvg";
-import { CozyButton } from "../components/ui/CozyButton";
-import { ScreenBackground } from "../components/ui/ScreenBackground";
+import React, { useEffect, useState } from 'react';
+import {
+  Modal,
+  Pressable,
+  StyleSheet,
+  Switch,
+  Text,
+  View,
+} from 'react-native';
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withRepeat,
+  withSequence,
+  withTiming,
+} from 'react-native-reanimated';
+import { ALL_LEVELS } from '../data/chapters';
+import { Language, UI_TEXT } from '../i18n/translations';
+import { PlayerProgress, getTotalStars } from '../storage/progress';
+import { FONTS, PALETTE, RADIUS, SHADOWS } from '../theme';
+import { CapybaraSvg } from '../components/svg/CapybaraSvg';
+import { InfoIcon, PlayIcon, SettingsIcon } from '../components/svg/Icons';
+import { OnsenSvg, StarSvg } from '../components/svg/TileSvg';
+import { CozyButton } from '../components/ui/CozyButton';
+import { ScreenBackground } from '../components/ui/ScreenBackground';
 
 interface HomeScreenProps {
   progress: PlayerProgress;
   onPlayContinue: (levelId: string) => void;
   onOpenChapters: () => void;
   onOpenCredits: () => void;
+  onChangeLanguage: (lang: Language) => void;
   onToggleMusic: (val: boolean) => void;
   onToggleSound: (val: boolean) => void;
   onToggleHaptics: (val: boolean) => void;
@@ -27,6 +43,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   onPlayContinue,
   onOpenChapters,
   onOpenCredits,
+  onChangeLanguage,
   onToggleMusic,
   onToggleSound,
   onToggleHaptics,
@@ -36,13 +53,22 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
 
+  const t = UI_TEXT[progress.language];
+
   const bobY = useSharedValue(0);
   useEffect(() => {
     if (progress.reduceMotion) {
       bobY.value = 0;
       return;
     }
-    bobY.value = withRepeat(withSequence(withTiming(-7, { duration: 1500, easing: Easing.inOut(Easing.ease) }), withTiming(0, { duration: 1500, easing: Easing.inOut(Easing.ease) })), -1, true);
+    bobY.value = withRepeat(
+      withSequence(
+        withTiming(-7, { duration: 1500, easing: Easing.inOut(Easing.ease) }),
+        withTiming(0, { duration: 1500, easing: Easing.inOut(Easing.ease) })
+      ),
+      -1,
+      true
+    );
   }, [bobY, progress.reduceMotion]);
 
   const floatStyle = useAnimatedStyle(() => ({
@@ -51,7 +77,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
 
   const totalStars = getTotalStars(progress);
   const maxStars = ALL_LEVELS.length * 3;
-  const nextLevel = ALL_LEVELS.find((lv) => !progress.starsByLevel[lv.id]) ?? ALL_LEVELS[0];
+  const nextLevel =
+    ALL_LEVELS.find((lv) => !progress.starsByLevel[lv.id]) ?? ALL_LEVELS[0];
 
   return (
     <ScreenBackground chapterId={1} reduceMotion={progress.reduceMotion}>
@@ -66,13 +93,25 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           </View>
 
           <View style={styles.topActions}>
-            <Pressable accessibilityLabel="Kredit & Tentang" style={({ pressed }) => [styles.iconBtn, SHADOWS.soft, pressed && { transform: [{ scale: 0.94 }] }]} onPress={onOpenCredits}>
+            <Pressable
+              accessibilityLabel={t.creditsBtn}
+              style={({ pressed }) => [
+                styles.iconBtn,
+                SHADOWS.soft,
+                pressed && { transform: [{ scale: 0.94 }] },
+              ]}
+              onPress={onOpenCredits}
+            >
               <InfoIcon size={22} color={PALETTE.terracotta} />
             </Pressable>
 
             <Pressable
-              accessibilityLabel="Pengaturan"
-              style={({ pressed }) => [styles.iconBtn, SHADOWS.soft, pressed && { transform: [{ scale: 0.94 }] }]}
+              accessibilityLabel={t.settingsTitle}
+              style={({ pressed }) => [
+                styles.iconBtn,
+                SHADOWS.soft,
+                pressed && { transform: [{ scale: 0.94 }] },
+              ]}
               onPress={() => {
                 setConfirmReset(false);
                 setSettingsOpen(true);
@@ -85,8 +124,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
 
         {/* Hero Section */}
         <View style={styles.hero}>
-          <Text style={styles.kicker}>COZY SLIDE PUZZLE</Text>
-          <Text style={styles.title}>Capybara Onsen:{"\n"}Puzzle</Text>
+          <Text style={styles.kicker}>{t.homeKicker}</Text>
+          <Text style={styles.title}>Capybara Onsen:{'\n'}Puzzle</Text>
 
           <Animated.View style={[styles.mascotBox, floatStyle]}>
             <View style={styles.onsenBase}>
@@ -97,46 +136,108 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             </View>
           </Animated.View>
 
-          <Text style={styles.subtitle}>Bantu Capybara melewati batu, lumpur, dan arus sungai menuju kolam air hangat.</Text>
+          <Text style={styles.subtitle}>{t.homeSubtitle}</Text>
         </View>
 
         {/* Action Buttons */}
         <View style={styles.actions}>
           <CozyButton
-            label={totalStars > 0 ? `Lanjut Stage ${nextLevel.stageNumber}` : "Mulai Bermain"}
+            label={
+              totalStars > 0
+                ? t.playContinue(nextLevel.stageNumber)
+                : t.playStart
+            }
             leftIcon={<PlayIcon size={18} color={PALETTE.white} />}
             onPress={() => onPlayContinue(nextLevel.id)}
           />
 
-          <CozyButton label={`Pilih Chapter (${ALL_LEVELS.length} Stage)`} variant="secondary" onPress={onOpenChapters} />
+          <CozyButton
+            label={t.selectChapterBtn(ALL_LEVELS.length)}
+            variant="secondary"
+            onPress={onOpenChapters}
+          />
         </View>
 
-        <Text style={styles.offlineFooter}>100% Offline • Tanpa Iklan</Text>
+        <Text style={styles.offlineFooter}>{t.offlineFooter}</Text>
 
         {/* Settings Modal */}
-        <Modal visible={settingsOpen} transparent animationType="fade" onRequestClose={() => setSettingsOpen(false)}>
+        <Modal
+          visible={settingsOpen}
+          transparent
+          animationType="fade"
+          onRequestClose={() => setSettingsOpen(false)}
+        >
           <View style={styles.modalBackdrop}>
             <View style={[styles.modalCard, SHADOWS.card]}>
-              <Text style={styles.modalTitle}>Pengaturan</Text>
+              <Text style={styles.modalTitle}>{t.settingsTitle}</Text>
 
+              {/* Language Switcher */}
               <View style={styles.settingRow}>
-                <Text style={styles.settingLabel}>Musik Latar (BGM)</Text>
-                <Switch value={progress.musicEnabled} onValueChange={onToggleMusic} trackColor={{ false: "#D6CCC2", true: PALETTE.terracotta }} thumbColor={PALETTE.white} />
+                <Text style={styles.settingLabel}>{t.languageLabel}</Text>
+                <View style={styles.langSwitch}>
+                  {(['id', 'en'] as const).map((lang) => {
+                    const active = progress.language === lang;
+                    return (
+                      <Pressable
+                        key={lang}
+                        style={[
+                          styles.langPill,
+                          active && styles.langPillActive,
+                        ]}
+                        onPress={() => onChangeLanguage(lang)}
+                      >
+                        <Text
+                          style={[
+                            styles.langPillText,
+                            active && styles.langPillTextActive,
+                          ]}
+                        >
+                          {lang.toUpperCase()}
+                        </Text>
+                      </Pressable>
+                    );
+                  })}
+                </View>
               </View>
 
               <View style={styles.settingRow}>
-                <Text style={styles.settingLabel}>Efek Suara (SFX)</Text>
-                <Switch value={progress.soundEnabled} onValueChange={onToggleSound} trackColor={{ false: "#D6CCC2", true: PALETTE.terracotta }} thumbColor={PALETTE.white} />
+                <Text style={styles.settingLabel}>{t.musicLabel}</Text>
+                <Switch
+                  value={progress.musicEnabled}
+                  onValueChange={onToggleMusic}
+                  trackColor={{ false: '#D6CCC2', true: PALETTE.terracotta }}
+                  thumbColor={PALETTE.white}
+                />
               </View>
 
               <View style={styles.settingRow}>
-                <Text style={styles.settingLabel}>Getar (Haptics)</Text>
-                <Switch value={progress.hapticsEnabled} onValueChange={onToggleHaptics} trackColor={{ false: "#D6CCC2", true: PALETTE.terracotta }} thumbColor={PALETTE.white} />
+                <Text style={styles.settingLabel}>{t.sfxLabel}</Text>
+                <Switch
+                  value={progress.soundEnabled}
+                  onValueChange={onToggleSound}
+                  trackColor={{ false: '#D6CCC2', true: PALETTE.terracotta }}
+                  thumbColor={PALETTE.white}
+                />
               </View>
 
               <View style={styles.settingRow}>
-                <Text style={styles.settingLabel}>Kurangi Gerakan</Text>
-                <Switch value={progress.reduceMotion} onValueChange={onToggleReduceMotion} trackColor={{ false: "#D6CCC2", true: PALETTE.terracotta }} thumbColor={PALETTE.white} />
+                <Text style={styles.settingLabel}>{t.hapticsLabel}</Text>
+                <Switch
+                  value={progress.hapticsEnabled}
+                  onValueChange={onToggleHaptics}
+                  trackColor={{ false: '#D6CCC2', true: PALETTE.terracotta }}
+                  thumbColor={PALETTE.white}
+                />
+              </View>
+
+              <View style={styles.settingRow}>
+                <Text style={styles.settingLabel}>{t.reduceMotionLabel}</Text>
+                <Switch
+                  value={progress.reduceMotion}
+                  onValueChange={onToggleReduceMotion}
+                  trackColor={{ false: '#D6CCC2', true: PALETTE.terracotta }}
+                  thumbColor={PALETTE.white}
+                />
               </View>
 
               <Pressable
@@ -146,19 +247,29 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                   onOpenCredits();
                 }}
               >
-                <Text style={styles.creditsBtnText}>Tentang Game</Text>
+                <Text style={styles.creditsBtnText}>{t.creditsBtn}</Text>
               </Pressable>
 
               {!confirmReset ? (
-                <Pressable style={styles.resetBtn} onPress={() => setConfirmReset(true)}>
-                  <Text style={styles.resetBtnText}>Reset Progres Game</Text>
+                <Pressable
+                  style={styles.resetBtn}
+                  onPress={() => setConfirmReset(true)}
+                >
+                  <Text style={styles.resetBtnText}>{t.resetBtn}</Text>
                 </Pressable>
               ) : (
                 <View style={styles.confirmBox}>
-                  <Text style={styles.confirmText}>Yakin hapus semua bintang & progres?</Text>
+                  <Text style={styles.confirmText}>
+                    {t.resetConfirmQuestion}
+                  </Text>
                   <View style={styles.confirmRow}>
-                    <Pressable style={styles.confirmCancel} onPress={() => setConfirmReset(false)}>
-                      <Text style={styles.confirmCancelText}>Batal</Text>
+                    <Pressable
+                      style={styles.confirmCancel}
+                      onPress={() => setConfirmReset(false)}
+                    >
+                      <Text style={styles.confirmCancelText}>
+                        {t.cancelBtn}
+                      </Text>
                     </Pressable>
                     <Pressable
                       style={styles.confirmYes}
@@ -168,13 +279,17 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                         setSettingsOpen(false);
                       }}
                     >
-                      <Text style={styles.confirmYesText}>Hapus</Text>
+                      <Text style={styles.confirmYesText}>{t.deleteBtn}</Text>
                     </Pressable>
                   </View>
                 </View>
               )}
 
-              <CozyButton label="Tutup" accentColor={PALETTE.espresso} onPress={() => setSettingsOpen(false)} />
+              <CozyButton
+                label={t.closeBtn}
+                accentColor={PALETTE.espresso}
+                onPress={() => setSettingsOpen(false)}
+              />
             </View>
           </View>
         </Modal>
@@ -189,21 +304,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 14,
     paddingBottom: 20,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
   },
   topBar: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   topActions: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 8,
   },
   starPill: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: PALETTE.creamLight,
     paddingHorizontal: 14,
     paddingVertical: 8,
@@ -222,13 +337,13 @@ const styles = StyleSheet.create({
     height: 44,
     borderRadius: RADIUS.pill,
     backgroundColor: PALETTE.creamLight,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     borderWidth: 1.5,
     borderColor: PALETTE.borderWarm,
   },
   hero: {
-    alignItems: "center",
+    alignItems: 'center',
   },
   kicker: {
     fontFamily: FONTS.bold,
@@ -241,29 +356,29 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.bold,
     fontSize: 34,
     color: PALETTE.espresso,
-    textAlign: "center",
+    textAlign: 'center',
     lineHeight: 40,
   },
   mascotBox: {
     marginVertical: 18,
     width: 176,
     height: 164,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   onsenBase: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 0,
   },
   capyOverlay: {
-    position: "absolute",
+    position: 'absolute',
     top: 2,
   },
   subtitle: {
     fontFamily: FONTS.regular,
     fontSize: 15,
     color: PALETTE.espressoSoft,
-    textAlign: "center",
+    textAlign: 'center',
     lineHeight: 22,
     paddingHorizontal: 10,
   },
@@ -272,47 +387,70 @@ const styles = StyleSheet.create({
   },
   offlineFooter: {
     fontFamily: FONTS.medium,
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 11.5,
     color: PALETTE.espressoMuted,
   },
   modalBackdrop: {
     flex: 1,
     backgroundColor: PALETTE.overlay,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 24,
   },
   modalCard: {
-    width: "100%",
+    width: '100%',
     maxWidth: 360,
     backgroundColor: PALETTE.creamLight,
     borderRadius: RADIUS.xl,
     padding: 24,
-    gap: 14,
+    gap: 12,
   },
   modalTitle: {
     fontFamily: FONTS.bold,
     fontSize: 22,
     color: PALETTE.espresso,
-    textAlign: "center",
+    textAlign: 'center',
   },
   settingRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingVertical: 4,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 3,
   },
   settingLabel: {
     fontFamily: FONTS.medium,
     fontSize: 15,
     color: PALETTE.espresso,
   },
+  langSwitch: {
+    flexDirection: 'row',
+    backgroundColor: PALETTE.creamDark,
+    borderRadius: RADIUS.pill,
+    padding: 3,
+    gap: 4,
+  },
+  langPill: {
+    paddingHorizontal: 14,
+    paddingVertical: 5,
+    borderRadius: RADIUS.pill,
+  },
+  langPillActive: {
+    backgroundColor: PALETTE.terracotta,
+  },
+  langPillText: {
+    fontFamily: FONTS.bold,
+    fontSize: 13,
+    color: PALETTE.espressoSoft,
+  },
+  langPillTextActive: {
+    color: PALETTE.white,
+  },
   creditsBtn: {
-    paddingVertical: 12,
+    paddingVertical: 11,
     borderRadius: RADIUS.md,
     backgroundColor: PALETTE.creamDark,
-    alignItems: "center",
+    alignItems: 'center',
   },
   creditsBtnText: {
     fontFamily: FONTS.semiBold,
@@ -320,10 +458,10 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   resetBtn: {
-    paddingVertical: 12,
+    paddingVertical: 11,
     borderRadius: RADIUS.md,
     backgroundColor: PALETTE.dangerLight,
-    alignItems: "center",
+    alignItems: 'center',
   },
   resetBtnText: {
     fontFamily: FONTS.semiBold,
@@ -338,12 +476,12 @@ const styles = StyleSheet.create({
   },
   confirmText: {
     fontFamily: FONTS.medium,
-    color: "#7B241C",
-    textAlign: "center",
+    color: '#7B241C',
+    textAlign: 'center',
     fontSize: 13,
   },
   confirmRow: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 10,
   },
   confirmCancel: {
@@ -351,7 +489,7 @@ const styles = StyleSheet.create({
     paddingVertical: 9,
     backgroundColor: PALETTE.white,
     borderRadius: RADIUS.sm,
-    alignItems: "center",
+    alignItems: 'center',
   },
   confirmCancelText: {
     fontFamily: FONTS.semiBold,
@@ -362,7 +500,7 @@ const styles = StyleSheet.create({
     paddingVertical: 9,
     backgroundColor: PALETTE.danger,
     borderRadius: RADIUS.sm,
-    alignItems: "center",
+    alignItems: 'center',
   },
   confirmYesText: {
     fontFamily: FONTS.semiBold,

@@ -105,7 +105,10 @@ export default function App() {
         <SafeAreaProvider>
           <SafeAreaView style={styles.safeArea}>
             <StatusBar style="dark" />
-            <SplashScreen onFinish={() => setSplashDone(true)} />
+            <SplashScreen
+              language={progress.language}
+              onFinish={() => setSplashDone(true)}
+            />
           </SafeAreaView>
         </SafeAreaProvider>
       </GestureHandlerRootView>
@@ -133,6 +136,9 @@ export default function App() {
                 }
                 onOpenChapters={() => setScreen({ name: 'chapters' })}
                 onOpenCredits={() => setScreen({ name: 'credits' })}
+                onChangeLanguage={(language) =>
+                  updateProgress({ ...progress, language })
+                }
                 onToggleMusic={(musicEnabled) =>
                   updateProgress({ ...progress, musicEnabled })
                 }
@@ -164,6 +170,7 @@ export default function App() {
 
             {screen.name === 'credits' && (
               <CreditsScreen
+                language={progress.language}
                 reduceMotion={progress.reduceMotion}
                 onBack={() => setScreen({ name: 'home' })}
               />

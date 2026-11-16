@@ -9,6 +9,11 @@ import {
   stepMove,
 } from '../engine/solver';
 import { Direction, GameState } from '../engine/types';
+import {
+  UI_TEXT,
+  getLevelHint,
+  getLevelTitle,
+} from '../i18n/translations';
 import { PlayerProgress } from '../storage/progress';
 import { CHAPTER_PALETTES, FONTS, PALETTE, RADIUS, SHADOWS } from '../theme';
 import { playSfx, triggerHaptic } from '../utils/sound';
@@ -50,6 +55,17 @@ export const GameScreen: React.FC<GameScreenProps> = ({
   );
   const palette = CHAPTER_PALETTES[level.chapter] ?? CHAPTER_PALETTES[1];
   const nextLevel = useMemo(() => getNextLevel(levelId), [levelId]);
+  const t = UI_TEXT[progress.language];
+  const localizedTitle = getLevelTitle(
+    level.id,
+    level.title,
+    progress.language
+  );
+  const localizedHint = getLevelHint(
+    level.id,
+    level.hintText,
+    progress.language
+  );
 
   const [gameState, setGameState] = useState<GameState>(() =>
     createInitialState(level)
@@ -152,7 +168,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({
               STAGE {level.stageNumber}
             </Text>
             <Text style={styles.stageTitle} numberOfLines={1}>
-              {level.title}
+              {localizedTitle}
             </Text>
           </View>
 
@@ -168,7 +184,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({
 
             <View style={[styles.movesPill, SHADOWS.soft]}>
               <Text style={styles.movesValue}>
-                Langkah {gameState.moves}
+                {t.movesLabel} {gameState.moves}
                 <Text style={styles.parText}>/{level.parMoves}</Text>
               </Text>
             </View>
@@ -195,17 +211,17 @@ export const GameScreen: React.FC<GameScreenProps> = ({
               reduceMotion={progress.reduceMotion}
               maxSize={Math.min(
                 boardArea.w,
-                boardArea.h - (showTutorial && level.hintText ? 62 : 8)
+                boardArea.h - (showTutorial && localizedHint ? 62 : 8)
               )}
               onSwipe={handleMove}
             />
           )}
-          {showTutorial && level.hintText && (
+          {showTutorial && localizedHint && (
             <Animated.View
               entering={progress.reduceMotion ? undefined : FadeIn.duration(220)}
               style={[styles.tutorialBubble, SHADOWS.soft]}
             >
-              <Text style={styles.tutorialText}>{level.hintText}</Text>
+              <Text style={styles.tutorialText}>{localizedHint}</Text>
               <Pressable
                 onPress={() => setShowTutorial(false)}
                 hitSlop={10}
@@ -341,9 +357,9 @@ export const GameScreen: React.FC<GameScreenProps> = ({
               style={[styles.winCard, SHADOWS.card]}
             >
               <Text style={[styles.winKicker, { color: palette.primary }]}>
-                ONSEN TERCAPAI!
+                {t.winKicker}
               </Text>
-              <Text style={styles.winTitle}>{level.title}</Text>
+              <Text style={styles.winTitle}>{localizedTitle}</Text>
 
               <View style={styles.winMascot}>
                 <OnsenSvg size={116} />
@@ -363,26 +379,26 @@ export const GameScreen: React.FC<GameScreenProps> = ({
               </View>
 
               <Text style={styles.winStats}>
-                {gameState.moves} langkah • Target {level.parMoves}
+                {t.winStats(gameState.moves, level.parMoves)}
               </Text>
 
               <View style={styles.winButtons}>
                 <CozyButton
-                  label="Ulangi"
+                  label={t.replayBtn}
                   variant="soft"
                   onPress={handleRestart}
                   style={{ flex: 1 }}
                 />
                 {nextLevel ? (
                   <CozyButton
-                    label="Lanjut"
+                    label={t.nextBtn}
                     accentColor={chapter.themeColor}
                     onPress={() => onSelectLevel(nextLevel.id)}
                     style={{ flex: 1.6 }}
                   />
                 ) : (
                   <CozyButton
-                    label="Selesai"
+                    label={t.finishBtn}
                     accentColor={chapter.themeColor}
                     onPress={onBack}
                     style={{ flex: 1.6 }}

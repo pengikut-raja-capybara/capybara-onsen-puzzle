@@ -1,31 +1,49 @@
-import React from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import { ALL_LEVELS, CHAPTERS } from "../data/chapters";
-import { FONTS, PALETTE, RADIUS, SHADOWS } from "../theme";
-import { CapybaraSvg } from "../components/svg/CapybaraSvg";
-import { BackIcon, HeartIcon } from "../components/svg/Icons";
-import { OnsenSvg, YuzuSvg } from "../components/svg/TileSvg";
-import { ScreenBackground } from "../components/ui/ScreenBackground";
+import React from 'react';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ALL_LEVELS, CHAPTERS } from '../data/chapters';
+import { Language, UI_TEXT } from '../i18n/translations';
+import { FONTS, PALETTE, RADIUS, SHADOWS } from '../theme';
+import { CapybaraSvg } from '../components/svg/CapybaraSvg';
+import { BackIcon, HeartIcon } from '../components/svg/Icons';
+import { OnsenSvg, YuzuSvg } from '../components/svg/TileSvg';
+import { ScreenBackground } from '../components/ui/ScreenBackground';
 
 interface CreditsScreenProps {
+  language?: Language;
   reduceMotion?: boolean;
   onBack: () => void;
 }
 
-export const CreditsScreen: React.FC<CreditsScreenProps> = ({ reduceMotion = false, onBack }) => {
+export const CreditsScreen: React.FC<CreditsScreenProps> = ({
+  language = 'id',
+  reduceMotion = false,
+  onBack,
+}) => {
+  const t = UI_TEXT[language];
+
   return (
     <ScreenBackground chapterId={1} reduceMotion={reduceMotion}>
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.header}>
-          <Pressable style={({ pressed }) => [styles.backBtn, SHADOWS.soft, pressed && { transform: [{ scale: 0.94 }] }]} onPress={onBack}>
+          <Pressable
+            style={({ pressed }) => [
+              styles.backBtn,
+              SHADOWS.soft,
+              pressed && { transform: [{ scale: 0.94 }] },
+            ]}
+            onPress={onBack}
+          >
             <BackIcon size={22} color={PALETTE.espresso} />
           </Pressable>
-          <Text style={styles.heading}>Tentang Game</Text>
+          <Text style={styles.heading}>{t.creditsHeading}</Text>
           <View style={styles.headerSpacer} />
         </View>
 
-        <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        <ScrollView
+          contentContainerStyle={styles.scrollContent}
+          showsVerticalScrollIndicator={false}
+        >
           {/* Mascot Hero Card */}
           <View style={[styles.heroCard, SHADOWS.soft]}>
             <View style={styles.mascotWrap}>
@@ -37,54 +55,51 @@ export const CreditsScreen: React.FC<CreditsScreenProps> = ({ reduceMotion = fal
               </View>
             </View>
             <Text style={styles.gameTitle}>Capybara Onsen: Puzzle</Text>
-            <Text style={styles.versionBadge}>Versi 1.0.0 • 100% Offline</Text>
-            <Text style={styles.gameDesc}>Game puzzle santai menemani perjalanan Capybara mengumpulkan jeruk Yuzu dan berendam di kolam air hangat.</Text>
+            <Text style={styles.versionBadge}>{t.versionBadge}</Text>
+            <Text style={styles.gameDesc}>{t.creditsGameDesc}</Text>
           </View>
 
           {/* Developer & Publisher */}
           <View style={[styles.sectionCard, SHADOWS.soft]}>
-            <Text style={styles.sectionLabel}>TIM PENGEMBANG (DEVELOPER)</Text>
+            <Text style={styles.sectionLabel}>{t.devLabel}</Text>
             <Text style={styles.sectionValue}>Pengikut Raja Capybara</Text>
             <Text style={styles.sectionSub}>
-              Game Design, Programming, Custom Vector Art, Level Design ({ALL_LEVELS.length} Stage / {CHAPTERS.length} Chapter), serta Cozy Kalimba BGM & SFX.
+              {t.devDesc(ALL_LEVELS.length, CHAPTERS.length)}
             </Text>
           </View>
 
           <View style={[styles.sectionCard, SHADOWS.soft]}>
-            <Text style={styles.sectionLabel}>PENERBIT (PUBLISHER)</Text>
+            <Text style={styles.sectionLabel}>{t.pubLabel}</Text>
             <Text style={styles.sectionValue}>Angsa Development Studio</Text>
-            <Text style={styles.sectionSub}>Distribusi resmi dan publikasi aplikasi di Google Play Store.</Text>
+            <Text style={styles.sectionSub}>{t.pubDesc}</Text>
           </View>
 
           {/* Privacy Policy Summary */}
           <View style={[styles.sectionCard, SHADOWS.soft]}>
-            <Text style={styles.sectionLabel}>KEBIJAKAN PRIVASI</Text>
-            <Text style={styles.sectionValue}>Tanpa Pengumpulan Data & 100% Offline</Text>
-            <Text style={styles.sectionSub}>
-              Aplikasi ini tidak mengumpulkan, menyimpan, atau membagikan data pribadi, lokasi, kontak, mikrofon, maupun kamera. Seluruh progres permainan disimpan secara lokal di perangkat Anda dan
-              tidak ada SDK iklan atau analitik pihak ketiga.
-            </Text>
+            <Text style={styles.sectionLabel}>{t.privacyLabel}</Text>
+            <Text style={styles.sectionValue}>{t.privacyTitle}</Text>
+            <Text style={styles.sectionSub}>{t.privacyDesc}</Text>
           </View>
 
           <View style={[styles.sectionCard, SHADOWS.soft]}>
-            <Text style={styles.sectionLabel}>REPOSITORI & TEKNOLOGI</Text>
-            <Text style={styles.sectionValue}>Dibuat dengan Google Antigravity</Text>
-            <Text style={styles.sectionSub}>
-              Dikembangkan menggunakan Google Antigravity, React Native, Expo, Reanimated, dan Fredoka Font (OFL). Kode sumber:
-              {"\n"}github.com/pengikut-raja-capybara/capybara-onsen-puzzle
-            </Text>
+            <Text style={styles.sectionLabel}>{t.techLabel}</Text>
+            <Text style={styles.sectionValue}>{t.techTitle}</Text>
+            <Text style={styles.sectionSub}>{t.techDesc}</Text>
           </View>
 
           {/* Promo / Learn & Collaborate Card */}
           <View style={[styles.promoCard, SHADOWS.soft]}>
-            <Text style={styles.promoLabel}>BELAJAR BUAT GAME & KOLABORASI</Text>
-            <Text style={styles.promoTitle}>Ingin Diajari Cara Membuat Game Seperti Ini?</Text>
-            <Text style={styles.promoSub}>
-              Penasaran cara membangun game & aplikasi dari nol menggunakan Google Antigravity, atau ingin membuat proyek bersama? Jangan ragu untuk menghubungi kami:
-            </Text>
+            <Text style={styles.promoLabel}>{t.promoLabel}</Text>
+            <Text style={styles.promoTitle}>{t.promoTitle}</Text>
+            <Text style={styles.promoSub}>{t.promoDesc}</Text>
             <View style={styles.contactBox}>
-              <Text style={styles.contactItem}>Kreator: Angga Alfiansah</Text>
-              <Text style={styles.contactItem}>Email: anggaalfiansah26@gmail.com</Text>
+              <Text style={styles.contactItem}>{t.creatorLine}</Text>
+              <Text style={styles.contactItem}>
+                Email: anggaalfiansah26@gmail.com
+              </Text>
+              <Text style={styles.contactItem}>
+                GitHub: github.com/pengikut-raja-capybara
+              </Text>
             </View>
           </View>
 
@@ -95,7 +110,7 @@ export const CreditsScreen: React.FC<CreditsScreenProps> = ({ reduceMotion = fal
               <HeartIcon size={18} color={PALETTE.terracotta} />
               <YuzuSvg size={22} />
             </View>
-            <Text style={styles.thanksText}>Terima kasih telah bermain dan bersantai bersama Capybara!</Text>
+            <Text style={styles.thanksText}>{t.thanksText}</Text>
           </View>
         </ScrollView>
       </View>
@@ -110,9 +125,9 @@ const styles = StyleSheet.create({
     paddingTop: 12,
   },
   header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     marginBottom: 14,
   },
   backBtn: {
@@ -122,8 +137,8 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.pill,
     borderWidth: 1.5,
     borderColor: PALETTE.borderWarm,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   heading: {
     fontFamily: FONTS.bold,
@@ -143,35 +158,35 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: PALETTE.borderWarm,
     padding: 20,
-    alignItems: "center",
+    alignItems: 'center',
     gap: 6,
   },
   mascotWrap: {
     width: 120,
     height: 108,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     marginBottom: 4,
   },
   onsenPos: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 0,
   },
   capyPos: {
-    position: "absolute",
+    position: 'absolute',
     top: 2,
   },
   gameTitle: {
     fontFamily: FONTS.bold,
     fontSize: 24,
     color: PALETTE.espresso,
-    textAlign: "center",
+    textAlign: 'center',
   },
   versionBadge: {
     fontFamily: FONTS.semiBold,
     fontSize: 12,
     color: PALETTE.terracotta,
-    backgroundColor: "#FDE8E4",
+    backgroundColor: '#FDE8E4',
     paddingHorizontal: 12,
     paddingVertical: 3,
     borderRadius: RADIUS.pill,
@@ -180,7 +195,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.regular,
     fontSize: 13.5,
     color: PALETTE.espressoSoft,
-    textAlign: "center",
+    textAlign: 'center',
     lineHeight: 20,
     marginTop: 4,
   },
@@ -210,10 +225,10 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
   promoCard: {
-    backgroundColor: "#FEF3C7",
+    backgroundColor: '#FEF3C7',
     borderRadius: RADIUS.lg,
     borderWidth: 1.5,
-    borderColor: "#FCD34D",
+    borderColor: '#FCD34D',
     padding: 16,
     gap: 6,
   },
@@ -236,11 +251,11 @@ const styles = StyleSheet.create({
   },
   contactBox: {
     marginTop: 4,
-    backgroundColor: "rgba(255, 251, 242, 0.85)",
+    backgroundColor: 'rgba(255, 251, 242, 0.85)',
     borderRadius: RADIUS.md,
     padding: 12,
     borderWidth: 1,
-    borderColor: "#FDE68A",
+    borderColor: '#FDE68A',
     gap: 3,
   },
   contactItem: {
@@ -249,19 +264,19 @@ const styles = StyleSheet.create({
     color: PALETTE.espresso,
   },
   thanksBox: {
-    alignItems: "center",
+    alignItems: 'center',
     paddingVertical: 14,
     gap: 6,
   },
   thanksIcons: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 8,
   },
   thanksText: {
     fontFamily: FONTS.medium,
     fontSize: 13.5,
     color: PALETTE.espressoSoft,
-    textAlign: "center",
+    textAlign: 'center',
   },
 });

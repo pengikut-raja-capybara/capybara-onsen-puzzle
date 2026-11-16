@@ -11,13 +11,19 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { FONTS, PALETTE } from '../theme';
+import { Language, UI_TEXT } from '../i18n/translations';
 import { CapybaraSvg } from '../components/svg/CapybaraSvg';
 
 interface SplashScreenProps {
+  language?: Language;
   onFinish: () => void;
 }
 
-export const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
+export const SplashScreen: React.FC<SplashScreenProps> = ({
+  language = 'id',
+  onFinish,
+}) => {
+  const t = UI_TEXT[language];
   const { width } = useWindowDimensions();
   const onFinishRef = useRef(onFinish);
   onFinishRef.current = onFinish;
@@ -104,7 +110,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
           <View style={styles.progressTrack}>
             <Animated.View style={[styles.progressFill, barFillStyle]} />
           </View>
-          <Text style={styles.loadingText}>Menyiapkan kolam hangat...</Text>
+          <Text style={styles.loadingText}>{t.splashLoading}</Text>
         </View>
       </LinearGradient>
     </Animated.View>
