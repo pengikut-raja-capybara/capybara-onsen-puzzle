@@ -53,7 +53,8 @@
           "enableBackgroundPlayback": false
         }
       ],
-      "expo-font"
+      "expo-font",
+      "./plugins/withReleaseOptimizations"
     ],
     "extra": {
       "eas": {
