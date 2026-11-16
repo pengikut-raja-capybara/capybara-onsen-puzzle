@@ -1,0 +1,1350 @@
+[
+  {
+    "id": "ch3_01",
+    "chapter": 3,
+    "stageNumber": 31,
+    "title": "Ikuti Arus",
+    "hintText": "Petak arus air akan membelokkan luncuran Capybara secara otomatis!",
+    "gridSize": {
+      "rows": 5,
+      "cols": 5
+    },
+    "parMoves": 1,
+    "start": {
+      "r": 0,
+      "c": 0
+    },
+    "goal": {
+      "r": 4,
+      "c": 4
+    },
+    "yuzus": [
+      {
+        "r": 4,
+        "c": 2
+      }
+    ],
+    "tiles": [
+      {
+        "r": 0,
+        "c": 2,
+        "type": "stream_down"
+      },
+      {
+        "r": 4,
+        "c": 2,
+        "type": "stream_right"
+      }
+    ]
+  },
+  {
+    "id": "ch3_02",
+    "chapter": 3,
+    "stageNumber": 32,
+    "title": "Gerbang Bambu",
+    "hintText": "Injak tombol batu untuk membuka semua gerbang bambu!",
+    "gridSize": {
+      "rows": 5,
+      "cols": 5
+    },
+    "parMoves": 2,
+    "start": {
+      "r": 4,
+      "c": 0
+    },
+    "goal": {
+      "r": 0,
+      "c": 4
+    },
+    "yuzus": [
+      {
+        "r": 0,
+        "c": 0
+      }
+    ],
+    "tiles": [
+      {
+        "r": 0,
+        "c": 0,
+        "type": "button"
+      },
+      {
+        "r": 0,
+        "c": 3,
+        "type": "gate"
+      },
+      {
+        "r": 1,
+        "c": 4,
+        "type": "rock"
+      }
+    ]
+  },
+  {
+    "id": "ch3_03",
+    "chapter": 3,
+    "stageNumber": 33,
+    "title": "Aliran Tenang",
+    "gridSize": {
+      "rows": 6,
+      "cols": 6
+    },
+    "parMoves": 5,
+    "start": {
+      "r": 2,
+      "c": 4
+    },
+    "goal": {
+      "r": 5,
+      "c": 0
+    },
+    "yuzus": [
+      {
+        "r": 5,
+        "c": 2
+      },
+      {
+        "r": 5,
+        "c": 3
+      }
+    ],
+    "tiles": [
+      {
+        "r": 3,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 2,
+        "type": "mud"
+      },
+      {
+        "r": 3,
+        "c": 1,
+        "type": "mud"
+      },
+      {
+        "r": 3,
+        "c": 3,
+        "type": "stream_up"
+      },
+      {
+        "r": 1,
+        "c": 3,
+        "type": "stream_up"
+      }
+    ]
+  },
+  {
+    "id": "ch3_04",
+    "chapter": 3,
+    "stageNumber": 34,
+    "title": "Bambu Hijau",
+    "gridSize": {
+      "rows": 6,
+      "cols": 6
+    },
+    "parMoves": 7,
+    "start": {
+      "r": 3,
+      "c": 3
+    },
+    "goal": {
+      "r": 1,
+      "c": 4
+    },
+    "yuzus": [
+      {
+        "r": 0,
+        "c": 3
+      },
+      {
+        "r": 1,
+        "c": 0
+      }
+    ],
+    "tiles": [
+      {
+        "r": 2,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 2,
+        "type": "mud"
+      },
+      {
+        "r": 4,
+        "c": 3,
+        "type": "mud"
+      },
+      {
+        "r": 4,
+        "c": 2,
+        "type": "stream_down"
+      },
+      {
+        "r": 4,
+        "c": 1,
+        "type": "stream_left"
+      },
+      {
+        "r": 0,
+        "c": 0,
+        "type": "button"
+      },
+      {
+        "r": 0,
+        "c": 5,
+        "type": "gate"
+      },
+      {
+        "r": 5,
+        "c": 5,
+        "type": "gate"
+      }
+    ]
+  },
+  {
+    "id": "ch3_05",
+    "chapter": 3,
+    "stageNumber": 35,
+    "title": "Belokan Sungai",
+    "gridSize": {
+      "rows": 6,
+      "cols": 6
+    },
+    "parMoves": 6,
+    "start": {
+      "r": 5,
+      "c": 2
+    },
+    "goal": {
+      "r": 4,
+      "c": 0
+    },
+    "yuzus": [
+      {
+        "r": 4,
+        "c": 5
+      },
+      {
+        "r": 5,
+        "c": 5
+      }
+    ],
+    "tiles": [
+      {
+        "r": 5,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 2,
+        "type": "mud"
+      },
+      {
+        "r": 3,
+        "c": 4,
+        "type": "mud"
+      },
+      {
+        "r": 3,
+        "c": 3,
+        "type": "stream_left"
+      },
+      {
+        "r": 4,
+        "c": 1,
+        "type": "stream_right"
+      }
+    ]
+  },
+  {
+    "id": "ch3_06",
+    "chapter": 3,
+    "stageNumber": 36,
+    "title": "Kunci Batu",
+    "gridSize": {
+      "rows": 6,
+      "cols": 6
+    },
+    "parMoves": 8,
+    "start": {
+      "r": 5,
+      "c": 3
+    },
+    "goal": {
+      "r": 1,
+      "c": 3
+    },
+    "yuzus": [
+      {
+        "r": 0,
+        "c": 2
+      },
+      {
+        "r": 4,
+        "c": 0
+      }
+    ],
+    "tiles": [
+      {
+        "r": 4,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 1,
+        "type": "mud"
+      },
+      {
+        "r": 0,
+        "c": 5,
+        "type": "mud"
+      },
+      {
+        "r": 4,
+        "c": 1,
+        "type": "stream_left"
+      },
+      {
+        "r": 3,
+        "c": 3,
+        "type": "stream_down"
+      },
+      {
+        "r": 3,
+        "c": 2,
+        "type": "button"
+      },
+      {
+        "r": 5,
+        "c": 5,
+        "type": "gate"
+      },
+      {
+        "r": 0,
+        "c": 0,
+        "type": "gate"
+      }
+    ]
+  },
+  {
+    "id": "ch3_07",
+    "chapter": 3,
+    "stageNumber": 37,
+    "title": "Rakit Santai",
+    "gridSize": {
+      "rows": 6,
+      "cols": 6
+    },
+    "parMoves": 7,
+    "start": {
+      "r": 2,
+      "c": 4
+    },
+    "goal": {
+      "r": 2,
+      "c": 1
+    },
+    "yuzus": [
+      {
+        "r": 0,
+        "c": 5
+      },
+      {
+        "r": 5,
+        "c": 5
+      }
+    ],
+    "tiles": [
+      {
+        "r": 2,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 5,
+        "type": "mud"
+      },
+      {
+        "r": 1,
+        "c": 1,
+        "type": "mud"
+      },
+      {
+        "r": 3,
+        "c": 4,
+        "type": "stream_right"
+      },
+      {
+        "r": 4,
+        "c": 3,
+        "type": "stream_left"
+      }
+    ]
+  },
+  {
+    "id": "ch3_08",
+    "chapter": 3,
+    "stageNumber": 38,
+    "title": "Desir Air",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 13,
+    "start": {
+      "r": 4,
+      "c": 2
+    },
+    "goal": {
+      "r": 2,
+      "c": 4
+    },
+    "yuzus": [
+      {
+        "r": 2,
+        "c": 1
+      },
+      {
+        "r": 0,
+        "c": 6
+      }
+    ],
+    "tiles": [
+      {
+        "r": 1,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 4,
+        "type": "mud"
+      },
+      {
+        "r": 2,
+        "c": 0,
+        "type": "mud"
+      },
+      {
+        "r": 3,
+        "c": 1,
+        "type": "log"
+      },
+      {
+        "r": 3,
+        "c": 3,
+        "type": "stream_up"
+      },
+      {
+        "r": 2,
+        "c": 3,
+        "type": "stream_left"
+      },
+      {
+        "r": 4,
+        "c": 5,
+        "type": "button"
+      },
+      {
+        "r": 0,
+        "c": 4,
+        "type": "gate"
+      },
+      {
+        "r": 5,
+        "c": 4,
+        "type": "gate"
+      }
+    ]
+  },
+  {
+    "id": "ch3_09",
+    "chapter": 3,
+    "stageNumber": 39,
+    "title": "Gerbang Utara",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 7,
+    "start": {
+      "r": 3,
+      "c": 1
+    },
+    "goal": {
+      "r": 0,
+      "c": 6
+    },
+    "yuzus": [
+      {
+        "r": 0,
+        "c": 1
+      },
+      {
+        "r": 3,
+        "c": 5
+      }
+    ],
+    "tiles": [
+      {
+        "r": 6,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 0,
+        "type": "mud"
+      },
+      {
+        "r": 1,
+        "c": 3,
+        "type": "mud"
+      },
+      {
+        "r": 0,
+        "c": 2,
+        "type": "log"
+      },
+      {
+        "r": 3,
+        "c": 3,
+        "type": "stream_right"
+      },
+      {
+        "r": 4,
+        "c": 4,
+        "type": "stream_right"
+      }
+    ]
+  },
+  {
+    "id": "ch3_10",
+    "chapter": 3,
+    "stageNumber": 40,
+    "title": "Pusaran Kecil",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 15,
+    "start": {
+      "r": 4,
+      "c": 0
+    },
+    "goal": {
+      "r": 1,
+      "c": 4
+    },
+    "yuzus": [
+      {
+        "r": 2,
+        "c": 3
+      },
+      {
+        "r": 0,
+        "c": 6
+      },
+      {
+        "r": 6,
+        "c": 4
+      }
+    ],
+    "tiles": [
+      {
+        "r": 6,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 5,
+        "type": "mud"
+      },
+      {
+        "r": 0,
+        "c": 4,
+        "type": "mud"
+      },
+      {
+        "r": 2,
+        "c": 2,
+        "type": "log"
+      },
+      {
+        "r": 3,
+        "c": 2,
+        "type": "stream_down"
+      },
+      {
+        "r": 1,
+        "c": 3,
+        "type": "stream_up"
+      },
+      {
+        "r": 0,
+        "c": 1,
+        "type": "button"
+      },
+      {
+        "r": 5,
+        "c": 2,
+        "type": "gate"
+      },
+      {
+        "r": 1,
+        "c": 0,
+        "type": "gate"
+      }
+    ]
+  },
+  {
+    "id": "ch3_11",
+    "chapter": 3,
+    "stageNumber": 41,
+    "title": "Hutan Bambu",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 12,
+    "start": {
+      "r": 4,
+      "c": 1
+    },
+    "goal": {
+      "r": 0,
+      "c": 1
+    },
+    "yuzus": [
+      {
+        "r": 4,
+        "c": 6
+      },
+      {
+        "r": 0,
+        "c": 5
+      },
+      {
+        "r": 6,
+        "c": 0
+      }
+    ],
+    "tiles": [
+      {
+        "r": 2,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 5,
+        "type": "mud"
+      },
+      {
+        "r": 1,
+        "c": 3,
+        "type": "mud"
+      },
+      {
+        "r": 1,
+        "c": 4,
+        "type": "log"
+      },
+      {
+        "r": 2,
+        "c": 3,
+        "type": "stream_up"
+      },
+      {
+        "r": 5,
+        "c": 1,
+        "type": "stream_up"
+      },
+      {
+        "r": 3,
+        "c": 5,
+        "type": "button"
+      },
+      {
+        "r": 4,
+        "c": 0,
+        "type": "gate"
+      },
+      {
+        "r": 0,
+        "c": 4,
+        "type": "gate"
+      }
+    ]
+  },
+  {
+    "id": "ch3_12",
+    "chapter": 3,
+    "stageNumber": 42,
+    "title": "Muara Hangat",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 14,
+    "start": {
+      "r": 6,
+      "c": 5
+    },
+    "goal": {
+      "r": 0,
+      "c": 2
+    },
+    "yuzus": [
+      {
+        "r": 5,
+        "c": 1
+      },
+      {
+        "r": 1,
+        "c": 3
+      },
+      {
+        "r": 3,
+        "c": 4
+      }
+    ],
+    "tiles": [
+      {
+        "r": 2,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 1,
+        "type": "mud"
+      },
+      {
+        "r": 2,
+        "c": 3,
+        "type": "mud"
+      },
+      {
+        "r": 3,
+        "c": 3,
+        "type": "log"
+      },
+      {
+        "r": 4,
+        "c": 4,
+        "type": "stream_up"
+      },
+      {
+        "r": 4,
+        "c": 5,
+        "type": "stream_left"
+      },
+      {
+        "r": 5,
+        "c": 2,
+        "type": "button"
+      },
+      {
+        "r": 2,
+        "c": 1,
+        "type": "gate"
+      },
+      {
+        "r": 1,
+        "c": 1,
+        "type": "gate"
+      }
+    ]
+  },
+  {
+    "id": "ch3_13",
+    "chapter": 3,
+    "stageNumber": 43,
+    "title": "Jalur Rahasia",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 11,
+    "start": {
+      "r": 0,
+      "c": 3
+    },
+    "goal": {
+      "r": 1,
+      "c": 5
+    },
+    "yuzus": [
+      {
+        "r": 6,
+        "c": 0
+      },
+      {
+        "r": 5,
+        "c": 6
+      },
+      {
+        "r": 1,
+        "c": 2
+      }
+    ],
+    "tiles": [
+      {
+        "r": 0,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 5,
+        "type": "mud"
+      },
+      {
+        "r": 3,
+        "c": 6,
+        "type": "mud"
+      },
+      {
+        "r": 6,
+        "c": 1,
+        "type": "log"
+      },
+      {
+        "r": 5,
+        "c": 5,
+        "type": "stream_up"
+      },
+      {
+        "r": 3,
+        "c": 4,
+        "type": "stream_down"
+      },
+      {
+        "r": 0,
+        "c": 0,
+        "type": "button"
+      },
+      {
+        "r": 1,
+        "c": 6,
+        "type": "gate"
+      },
+      {
+        "r": 2,
+        "c": 6,
+        "type": "gate"
+      }
+    ]
+  },
+  {
+    "id": "ch3_14",
+    "chapter": 3,
+    "stageNumber": 44,
+    "title": "Harmoni Alam",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 11,
+    "start": {
+      "r": 4,
+      "c": 0
+    },
+    "goal": {
+      "r": 2,
+      "c": 4
+    },
+    "yuzus": [
+      {
+        "r": 1,
+        "c": 5
+      },
+      {
+        "r": 0,
+        "c": 5
+      },
+      {
+        "r": 1,
+        "c": 4
+      }
+    ],
+    "tiles": [
+      {
+        "r": 6,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 3,
+        "type": "mud"
+      },
+      {
+        "r": 6,
+        "c": 4,
+        "type": "mud"
+      },
+      {
+        "r": 4,
+        "c": 2,
+        "type": "log"
+      },
+      {
+        "r": 5,
+        "c": 1,
+        "type": "stream_up"
+      },
+      {
+        "r": 2,
+        "c": 1,
+        "type": "stream_down"
+      },
+      {
+        "r": 1,
+        "c": 6,
+        "type": "button"
+      },
+      {
+        "r": 6,
+        "c": 6,
+        "type": "gate"
+      },
+      {
+        "r": 6,
+        "c": 0,
+        "type": "gate"
+      }
+    ]
+  },
+  {
+    "id": "ch3_15",
+    "chapter": 3,
+    "stageNumber": 45,
+    "title": "Puncak Kedamaian",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 10,
+    "start": {
+      "r": 1,
+      "c": 3
+    },
+    "goal": {
+      "r": 5,
+      "c": 1
+    },
+    "yuzus": [
+      {
+        "r": 6,
+        "c": 6
+      },
+      {
+        "r": 5,
+        "c": 4
+      },
+      {
+        "r": 6,
+        "c": 3
+      }
+    ],
+    "tiles": [
+      {
+        "r": 3,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 5,
+        "type": "mud"
+      },
+      {
+        "r": 3,
+        "c": 5,
+        "type": "mud"
+      },
+      {
+        "r": 3,
+        "c": 3,
+        "type": "log"
+      },
+      {
+        "r": 1,
+        "c": 1,
+        "type": "stream_up"
+      },
+      {
+        "r": 4,
+        "c": 5,
+        "type": "stream_down"
+      },
+      {
+        "r": 3,
+        "c": 6,
+        "type": "button"
+      },
+      {
+        "r": 2,
+        "c": 3,
+        "type": "gate"
+      },
+      {
+        "r": 0,
+        "c": 1,
+        "type": "gate"
+      }
+    ]
+  }
+]
