@@ -2,6 +2,7 @@
   "expo": {
     "name": "Capybara Onsen: Puzzle",
     "slug": "capybara-onsen-puzzle",
+    "owner": "anggaalfiansah",
     "version": "1.0.0",
     "githubUrl": "https://github.com/pengikut-raja-capybara/capybara-onsen-puzzle",
     "orientation": "portrait",
@@ -53,6 +54,11 @@
         }
       ],
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "b31c8490-65e8-432f-9ac3-e8fa32e622a9"
+      }
+    }
   }
 }
