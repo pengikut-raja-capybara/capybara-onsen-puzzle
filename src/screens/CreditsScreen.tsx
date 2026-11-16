@@ -67,9 +67,25 @@ export const CreditsScreen: React.FC<CreditsScreenProps> = ({ reduceMotion = fal
           </View>
 
           <View style={[styles.sectionCard, SHADOWS.soft]}>
-            <Text style={styles.sectionLabel}>REPOSITORI & SUMBER TERBUKA</Text>
-            <Text style={styles.sectionValue}>github.com/pengikut-raja-capybara/capybara-onsen-puzzle</Text>
-            <Text style={styles.sectionSub}>Dibangun dengan React Native, Expo, Reanimated, dan Fredoka Font (SIL Open Font License).</Text>
+            <Text style={styles.sectionLabel}>REPOSITORI & TEKNOLOGI</Text>
+            <Text style={styles.sectionValue}>Dibuat dengan Google Antigravity</Text>
+            <Text style={styles.sectionSub}>
+              Dikembangkan menggunakan Google Antigravity, React Native, Expo, Reanimated, dan Fredoka Font (OFL). Kode sumber:
+              {"\n"}github.com/pengikut-raja-capybara/capybara-onsen-puzzle
+            </Text>
+          </View>
+
+          {/* Promo / Learn & Collaborate Card */}
+          <View style={[styles.promoCard, SHADOWS.soft]}>
+            <Text style={styles.promoLabel}>BELAJAR BUAT GAME & KOLABORASI</Text>
+            <Text style={styles.promoTitle}>Ingin Diajari Cara Membuat Game Seperti Ini?</Text>
+            <Text style={styles.promoSub}>
+              Penasaran cara membangun game & aplikasi dari nol menggunakan Google Antigravity, atau ingin membuat proyek bersama? Jangan ragu untuk menghubungi kami:
+            </Text>
+            <View style={styles.contactBox}>
+              <Text style={styles.contactItem}>Kreator: Angga Alfiansah</Text>
+              <Text style={styles.contactItem}>Email: anggaalfiansah26@gmail.com</Text>
+            </View>
           </View>
 
           {/* Warm Thank You Footer */}
@@ -192,6 +208,45 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: PALETTE.espressoSoft,
     lineHeight: 18,
+  },
+  promoCard: {
+    backgroundColor: "#FEF3C7",
+    borderRadius: RADIUS.lg,
+    borderWidth: 1.5,
+    borderColor: "#FCD34D",
+    padding: 16,
+    gap: 6,
+  },
+  promoLabel: {
+    fontFamily: FONTS.bold,
+    fontSize: 11,
+    letterSpacing: 1.3,
+    color: PALETTE.yuzuDark,
+  },
+  promoTitle: {
+    fontFamily: FONTS.bold,
+    fontSize: 16.5,
+    color: PALETTE.espresso,
+  },
+  promoSub: {
+    fontFamily: FONTS.regular,
+    fontSize: 13,
+    color: PALETTE.espressoSoft,
+    lineHeight: 18,
+  },
+  contactBox: {
+    marginTop: 4,
+    backgroundColor: "rgba(255, 251, 242, 0.85)",
+    borderRadius: RADIUS.md,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: "#FDE68A",
+    gap: 3,
+  },
+  contactItem: {
+    fontFamily: FONTS.semiBold,
+    fontSize: 13,
+    color: PALETTE.espresso,
   },
   thanksBox: {
     alignItems: "center",
