@@ -33,12 +33,18 @@ Lihat isi dokumen di [PRIVACY_POLICY.md](./PRIVACY_POLICY.md) atau [docs/privacy
 
 ## ✨ Fitur Utama
 
-- **45 Stage dalam 3 Chapter:**
+- **75 Stage dalam 5 Chapter (termasuk 5 Showcase Finale):**
   1. *Kolam Onsen Hangat* (Batu penghalang & lumpur hangat)
   2. *Kebun Jeruk Yuzu* (Mekanik dorong batang kayu)
   3. *Sungai Bambu Tenang* (Arus air & tombol gerbang bambu)
-- **Solver BFS & Hint Instan:** Petunjuk langkah berikutnya dihitung secara *real-time* dari posisi pemain.
-- **Audio & Visual In-App:** Ilustrasi vektor kustom, animasi 60fps (`react-native-reanimated`), serta musik latar Kalimba & efek suara lokal.
+  4. *Puncak Salju Onsen* (Es tipis yang retak & mencair)
+  5. *Malam Lentera* (Pusaran portal & kombinasi seluruh mekanik)
+- **Kolam Onsen Interaktif (6 Dekorasi Kolam):** Sentuh Capybara di layar utama untuk memunculkan partikel hati dan kutipan menenangkan, serta pasang hingga 6 dekorasi kolam yang terbuka seiring progres.
+- **Kalender Stempel *Hanko* Harian & Mode Zen:** Catat hari bermain di kalender tinta *Hanko* bulanan tanpa hukuman *streak* putus, atau bersantai di **Mode Zen** (`5×5` ringan tanpa target langkah maupun rating bintang).
+- **Puzzle Harian & Acak:** Tantangan baru setiap hari serta puzzle acak tanpa batas.
+- **Koleksi Aksesori, Dekorasi & Buku Stempel Onsen:** Buka aksesori lucu untuk Capybara, dekorasi kolam, dan kumpulkan stempel pencapaian bergaya *Goshuincho*.
+- **Solver BFS & Hint Instan:** Petunjuk langkah berikutnya dihitung secara *real-time* dari posisi pemain, disertai pratinjau jalur dan deteksi jalan buntu.
+- **Audio & Visual In-App:** Ilustrasi vektor kustom, animasi 60fps (`react-native-reanimated`), musik latar Kalimba, suara alam menenangkan, efek suara lembut, dan kontrol *swipe* (plus D-Pad opsional).
 - **100% Offline & Privasi Terjaga:** Tanpa koneksi internet, tanpa iklan, tanpa pelacak.
 
 ---

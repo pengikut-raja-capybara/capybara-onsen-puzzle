@@ -1,49 +1,36 @@
-import React from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { ALL_LEVELS, CHAPTERS } from '../data/chapters';
-import { Language, UI_TEXT } from '../i18n/translations';
-import { FONTS, PALETTE, RADIUS, SHADOWS } from '../theme';
-import { CapybaraSvg } from '../components/svg/CapybaraSvg';
-import { BackIcon, HeartIcon } from '../components/svg/Icons';
-import { OnsenSvg, YuzuSvg } from '../components/svg/TileSvg';
-import { ScreenBackground } from '../components/ui/ScreenBackground';
+import React from "react";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ALL_LEVELS, CHAPTERS } from "../data/chapters";
+import { Language, UI_TEXT } from "../i18n/translations";
+import { FONTS, PALETTE, RADIUS, SHADOWS } from "../theme";
+import { CapybaraSvg } from "../components/svg/CapybaraSvg";
+import { BackIcon, HeartIcon } from "../components/svg/Icons";
+import { OnsenSvg, YuzuSvg } from "../components/svg/TileSvg";
+import { ScreenBackground } from "../components/ui/ScreenBackground";
 
 interface CreditsScreenProps {
   language?: Language;
   reduceMotion?: boolean;
+  hapticsEnabled?: boolean;
   onBack: () => void;
 }
 
-export const CreditsScreen: React.FC<CreditsScreenProps> = ({
-  language = 'id',
-  reduceMotion = false,
-  onBack,
-}) => {
+export const CreditsScreen: React.FC<CreditsScreenProps> = ({ language = "id", reduceMotion = false, hapticsEnabled = true, onBack }) => {
   const t = UI_TEXT[language];
 
   return (
-    <ScreenBackground chapterId={1} reduceMotion={reduceMotion}>
+    <ScreenBackground chapterId={1} reduceMotion={reduceMotion} hapticsEnabled={hapticsEnabled}>
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.header}>
-          <Pressable
-            style={({ pressed }) => [
-              styles.backBtn,
-              SHADOWS.soft,
-              pressed && { transform: [{ scale: 0.94 }] },
-            ]}
-            onPress={onBack}
-          >
+          <Pressable style={({ pressed }) => [styles.backBtn, SHADOWS.soft, pressed && { transform: [{ scale: 0.94 }] }]} onPress={onBack}>
             <BackIcon size={22} color={PALETTE.espresso} />
           </Pressable>
           <Text style={styles.heading}>{t.creditsHeading}</Text>
           <View style={styles.headerSpacer} />
         </View>
 
-        <ScrollView
-          contentContainerStyle={styles.scrollContent}
-          showsVerticalScrollIndicator={false}
-        >
+        <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
           {/* Mascot Hero Card */}
           <View style={[styles.heroCard, SHADOWS.soft]}>
             <View style={styles.mascotWrap}>
@@ -63,9 +50,7 @@ export const CreditsScreen: React.FC<CreditsScreenProps> = ({
           <View style={[styles.sectionCard, SHADOWS.soft]}>
             <Text style={styles.sectionLabel}>{t.devLabel}</Text>
             <Text style={styles.sectionValue}>Pengikut Raja Capybara</Text>
-            <Text style={styles.sectionSub}>
-              {t.devDesc(ALL_LEVELS.length, CHAPTERS.length)}
-            </Text>
+            <Text style={styles.sectionSub}>{t.devDesc(ALL_LEVELS.length, CHAPTERS.length)}</Text>
           </View>
 
           <View style={[styles.sectionCard, SHADOWS.soft]}>
@@ -85,6 +70,9 @@ export const CreditsScreen: React.FC<CreditsScreenProps> = ({
             <Text style={styles.sectionLabel}>{t.techLabel}</Text>
             <Text style={styles.sectionValue}>{t.techTitle}</Text>
             <Text style={styles.sectionSub}>{t.techDesc}</Text>
+            <Text style={styles.repoUrl} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.78}>
+              github.com/pengikut-raja-capybara/capybara-onsen-puzzle
+            </Text>
           </View>
 
           {/* Promo / Learn & Collaborate Card */}
@@ -93,12 +81,14 @@ export const CreditsScreen: React.FC<CreditsScreenProps> = ({
             <Text style={styles.promoTitle}>{t.promoTitle}</Text>
             <Text style={styles.promoSub}>{t.promoDesc}</Text>
             <View style={styles.contactBox}>
-              <Text style={styles.contactItem}>{t.creatorLine}</Text>
-              <Text style={styles.contactItem}>
+              <Text style={styles.contactItem} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.8}>
+                {t.creatorLine}
+              </Text>
+              <Text style={styles.contactItem} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.8}>
                 Email: anggaalfiansah26@gmail.com
               </Text>
-              <Text style={styles.contactItem}>
-                GitHub: github.com/pengikut-raja-capybara
+              <Text style={styles.contactItem} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.8}>
+                GitHub: github.com/anggaalfiansah
               </Text>
             </View>
           </View>
@@ -125,9 +115,9 @@ const styles = StyleSheet.create({
     paddingTop: 12,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     marginBottom: 14,
   },
   backBtn: {
@@ -137,8 +127,8 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.pill,
     borderWidth: 1.5,
     borderColor: PALETTE.borderWarm,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   heading: {
     fontFamily: FONTS.bold,
@@ -158,35 +148,35 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: PALETTE.borderWarm,
     padding: 20,
-    alignItems: 'center',
+    alignItems: "center",
     gap: 6,
   },
   mascotWrap: {
     width: 120,
     height: 108,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginBottom: 4,
   },
   onsenPos: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
   },
   capyPos: {
-    position: 'absolute',
+    position: "absolute",
     top: 2,
   },
   gameTitle: {
     fontFamily: FONTS.bold,
     fontSize: 24,
     color: PALETTE.espresso,
-    textAlign: 'center',
+    textAlign: "center",
   },
   versionBadge: {
     fontFamily: FONTS.semiBold,
     fontSize: 12,
     color: PALETTE.terracotta,
-    backgroundColor: '#FDE8E4',
+    backgroundColor: "#FDE8E4",
     paddingHorizontal: 12,
     paddingVertical: 3,
     borderRadius: RADIUS.pill,
@@ -195,7 +185,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.regular,
     fontSize: 13.5,
     color: PALETTE.espressoSoft,
-    textAlign: 'center',
+    textAlign: "center",
     lineHeight: 20,
     marginTop: 4,
   },
@@ -224,11 +214,17 @@ const styles = StyleSheet.create({
     color: PALETTE.espressoSoft,
     lineHeight: 18,
   },
+  repoUrl: {
+    fontFamily: FONTS.semiBold,
+    fontSize: 12.5,
+    color: PALETTE.terracotta,
+    marginTop: 2,
+  },
   promoCard: {
-    backgroundColor: '#FEF3C7',
+    backgroundColor: "#FEF3C7",
     borderRadius: RADIUS.lg,
     borderWidth: 1.5,
-    borderColor: '#FCD34D',
+    borderColor: "#FCD34D",
     padding: 16,
     gap: 6,
   },
@@ -251,11 +247,11 @@ const styles = StyleSheet.create({
   },
   contactBox: {
     marginTop: 4,
-    backgroundColor: 'rgba(255, 251, 242, 0.85)',
+    backgroundColor: "rgba(255, 251, 242, 0.85)",
     borderRadius: RADIUS.md,
     padding: 12,
     borderWidth: 1,
-    borderColor: '#FDE68A',
+    borderColor: "#FDE68A",
     gap: 3,
   },
   contactItem: {
@@ -264,19 +260,19 @@ const styles = StyleSheet.create({
     color: PALETTE.espresso,
   },
   thanksBox: {
-    alignItems: 'center',
+    alignItems: "center",
     paddingVertical: 14,
     gap: 6,
   },
   thanksIcons: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: 8,
   },
   thanksText: {
     fontFamily: FONTS.medium,
     fontSize: 13.5,
     color: PALETTE.espressoSoft,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });

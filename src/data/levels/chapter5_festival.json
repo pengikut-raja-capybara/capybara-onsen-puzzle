@@ -1,0 +1,1413 @@
+[
+  {
+    "id": "ch5_01",
+    "chapter": 5,
+    "stageNumber": 61,
+    "title": "Pusaran Air Panas",
+    "hintText": "Masuk ke pusaran air untuk berpindah ke pusaran pasangannya!",
+    "gridSize": {
+      "rows": 6,
+      "cols": 6
+    },
+    "parMoves": 3,
+    "start": {
+      "r": 0,
+      "c": 0
+    },
+    "goal": {
+      "r": 5,
+      "c": 5
+    },
+    "yuzus": [
+      {
+        "r": 2,
+        "c": 5
+      }
+    ],
+    "tiles": [
+      {
+        "r": 0,
+        "c": 3,
+        "type": "portal"
+      },
+      {
+        "r": 2,
+        "c": 2,
+        "type": "portal"
+      },
+      {
+        "r": 0,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 5,
+        "type": "mud"
+      },
+      {
+        "r": 5,
+        "c": 2,
+        "type": "rock"
+      }
+    ]
+  },
+  {
+    "id": "ch5_02",
+    "chapter": 5,
+    "stageNumber": 62,
+    "title": "Lentera Senja",
+    "gridSize": {
+      "rows": 6,
+      "cols": 6
+    },
+    "parMoves": 8,
+    "start": {
+      "r": 2,
+      "c": 2
+    },
+    "goal": {
+      "r": 0,
+      "c": 2
+    },
+    "yuzus": [
+      {
+        "r": 3,
+        "c": 0
+      },
+      {
+        "r": 1,
+        "c": 5
+      }
+    ],
+    "tiles": [
+      {
+        "r": 4,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 3,
+        "type": "mud"
+      },
+      {
+        "r": 0,
+        "c": 1,
+        "type": "log"
+      },
+      {
+        "r": 0,
+        "c": 3,
+        "type": "ice"
+      },
+      {
+        "r": 4,
+        "c": 4,
+        "type": "stream_up"
+      },
+      {
+        "r": 3,
+        "c": 4,
+        "type": "portal"
+      },
+      {
+        "r": 3,
+        "c": 1,
+        "type": "portal"
+      }
+    ]
+  },
+  {
+    "id": "ch5_03",
+    "chapter": 5,
+    "stageNumber": 63,
+    "title": "Cahaya Air",
+    "gridSize": {
+      "rows": 6,
+      "cols": 6
+    },
+    "parMoves": 9,
+    "start": {
+      "r": 0,
+      "c": 5
+    },
+    "goal": {
+      "r": 4,
+      "c": 4
+    },
+    "yuzus": [
+      {
+        "r": 2,
+        "c": 1
+      },
+      {
+        "r": 3,
+        "c": 2
+      }
+    ],
+    "tiles": [
+      {
+        "r": 4,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 3,
+        "type": "mud"
+      },
+      {
+        "r": 5,
+        "c": 1,
+        "type": "ice"
+      },
+      {
+        "r": 1,
+        "c": 4,
+        "type": "stream_left"
+      },
+      {
+        "r": 3,
+        "c": 1,
+        "type": "portal"
+      },
+      {
+        "r": 2,
+        "c": 2,
+        "type": "portal"
+      }
+    ]
+  },
+  {
+    "id": "ch5_04",
+    "chapter": 5,
+    "stageNumber": 64,
+    "title": "Portal Kembar",
+    "gridSize": {
+      "rows": 6,
+      "cols": 6
+    },
+    "parMoves": 9,
+    "start": {
+      "r": 4,
+      "c": 0
+    },
+    "goal": {
+      "r": 1,
+      "c": 4
+    },
+    "yuzus": [
+      {
+        "r": 1,
+        "c": 5
+      },
+      {
+        "r": 5,
+        "c": 5
+      }
+    ],
+    "tiles": [
+      {
+        "r": 3,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 4,
+        "type": "mud"
+      },
+      {
+        "r": 5,
+        "c": 2,
+        "type": "log"
+      },
+      {
+        "r": 3,
+        "c": 5,
+        "type": "ice"
+      },
+      {
+        "r": 1,
+        "c": 2,
+        "type": "stream_up"
+      },
+      {
+        "r": 4,
+        "c": 2,
+        "type": "portal"
+      },
+      {
+        "r": 3,
+        "c": 4,
+        "type": "portal"
+      }
+    ]
+  },
+  {
+    "id": "ch5_05",
+    "chapter": 5,
+    "stageNumber": 65,
+    "title": "Festival Malam",
+    "gridSize": {
+      "rows": 6,
+      "cols": 6
+    },
+    "parMoves": 9,
+    "start": {
+      "r": 0,
+      "c": 1
+    },
+    "goal": {
+      "r": 3,
+      "c": 3
+    },
+    "yuzus": [
+      {
+        "r": 5,
+        "c": 0
+      },
+      {
+        "r": 4,
+        "c": 2
+      }
+    ],
+    "tiles": [
+      {
+        "r": 3,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 1,
+        "type": "mud"
+      },
+      {
+        "r": 3,
+        "c": 5,
+        "type": "ice"
+      },
+      {
+        "r": 5,
+        "c": 5,
+        "type": "ice"
+      },
+      {
+        "r": 3,
+        "c": 1,
+        "type": "stream_up"
+      },
+      {
+        "r": 3,
+        "c": 2,
+        "type": "portal"
+      },
+      {
+        "r": 4,
+        "c": 4,
+        "type": "portal"
+      }
+    ]
+  },
+  {
+    "id": "ch5_06",
+    "chapter": 5,
+    "stageNumber": 66,
+    "title": "Kunang-Kunang",
+    "gridSize": {
+      "rows": 6,
+      "cols": 6
+    },
+    "parMoves": 12,
+    "start": {
+      "r": 3,
+      "c": 3
+    },
+    "goal": {
+      "r": 0,
+      "c": 3
+    },
+    "yuzus": [
+      {
+        "r": 4,
+        "c": 5
+      },
+      {
+        "r": 2,
+        "c": 4
+      }
+    ],
+    "tiles": [
+      {
+        "r": 0,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 1,
+        "type": "mud"
+      },
+      {
+        "r": 2,
+        "c": 2,
+        "type": "log"
+      },
+      {
+        "r": 2,
+        "c": 3,
+        "type": "ice"
+      },
+      {
+        "r": 5,
+        "c": 2,
+        "type": "ice"
+      },
+      {
+        "r": 3,
+        "c": 1,
+        "type": "stream_down"
+      },
+      {
+        "r": 1,
+        "c": 4,
+        "type": "portal"
+      },
+      {
+        "r": 4,
+        "c": 4,
+        "type": "portal"
+      }
+    ]
+  },
+  {
+    "id": "ch5_07",
+    "chapter": 5,
+    "stageNumber": 67,
+    "title": "Bayangan Bulan",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 8,
+    "start": {
+      "r": 6,
+      "c": 4
+    },
+    "goal": {
+      "r": 1,
+      "c": 1
+    },
+    "yuzus": [
+      {
+        "r": 6,
+        "c": 3
+      },
+      {
+        "r": 0,
+        "c": 1
+      }
+    ],
+    "tiles": [
+      {
+        "r": 1,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 4,
+        "type": "mud"
+      },
+      {
+        "r": 0,
+        "c": 0,
+        "type": "ice"
+      },
+      {
+        "r": 4,
+        "c": 3,
+        "type": "ice"
+      },
+      {
+        "r": 2,
+        "c": 1,
+        "type": "stream_right"
+      },
+      {
+        "r": 5,
+        "c": 1,
+        "type": "portal"
+      },
+      {
+        "r": 5,
+        "c": 5,
+        "type": "portal"
+      }
+    ]
+  },
+  {
+    "id": "ch5_08",
+    "chapter": 5,
+    "stageNumber": 68,
+    "title": "Jembatan Lentera",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 6,
+    "start": {
+      "r": 1,
+      "c": 6
+    },
+    "goal": {
+      "r": 3,
+      "c": 4
+    },
+    "yuzus": [
+      {
+        "r": 6,
+        "c": 4
+      },
+      {
+        "r": 0,
+        "c": 6
+      }
+    ],
+    "tiles": [
+      {
+        "r": 1,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 0,
+        "type": "mud"
+      },
+      {
+        "r": 5,
+        "c": 2,
+        "type": "log"
+      },
+      {
+        "r": 4,
+        "c": 3,
+        "type": "ice"
+      },
+      {
+        "r": 4,
+        "c": 6,
+        "type": "ice"
+      },
+      {
+        "r": 5,
+        "c": 3,
+        "type": "stream_down"
+      },
+      {
+        "r": 1,
+        "c": 4,
+        "type": "portal"
+      },
+      {
+        "r": 5,
+        "c": 1,
+        "type": "portal"
+      }
+    ]
+  },
+  {
+    "id": "ch5_09",
+    "chapter": 5,
+    "stageNumber": 69,
+    "title": "Pusaran Bintang",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 8,
+    "start": {
+      "r": 2,
+      "c": 0
+    },
+    "goal": {
+      "r": 1,
+      "c": 2
+    },
+    "yuzus": [
+      {
+        "r": 0,
+        "c": 1
+      },
+      {
+        "r": 6,
+        "c": 0
+      }
+    ],
+    "tiles": [
+      {
+        "r": 5,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 1,
+        "type": "mud"
+      },
+      {
+        "r": 4,
+        "c": 6,
+        "type": "ice"
+      },
+      {
+        "r": 3,
+        "c": 0,
+        "type": "ice"
+      },
+      {
+        "r": 5,
+        "c": 3,
+        "type": "stream_left"
+      },
+      {
+        "r": 5,
+        "c": 2,
+        "type": "portal"
+      },
+      {
+        "r": 2,
+        "c": 2,
+        "type": "portal"
+      },
+      {
+        "r": 5,
+        "c": 5,
+        "type": "button"
+      },
+      {
+        "r": 0,
+        "c": 2,
+        "type": "gate"
+      },
+      {
+        "r": 4,
+        "c": 3,
+        "type": "gate"
+      }
+    ]
+  },
+  {
+    "id": "ch5_10",
+    "chapter": 5,
+    "stageNumber": 70,
+    "title": "Taman Malam",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 6,
+    "start": {
+      "r": 0,
+      "c": 1
+    },
+    "goal": {
+      "r": 4,
+      "c": 5
+    },
+    "yuzus": [
+      {
+        "r": 4,
+        "c": 0
+      },
+      {
+        "r": 2,
+        "c": 6
+      },
+      {
+        "r": 1,
+        "c": 4
+      }
+    ],
+    "tiles": [
+      {
+        "r": 0,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 0,
+        "type": "mud"
+      },
+      {
+        "r": 5,
+        "c": 5,
+        "type": "log"
+      },
+      {
+        "r": 1,
+        "c": 1,
+        "type": "ice"
+      },
+      {
+        "r": 5,
+        "c": 3,
+        "type": "ice"
+      },
+      {
+        "r": 3,
+        "c": 5,
+        "type": "stream_up"
+      },
+      {
+        "r": 3,
+        "c": 4,
+        "type": "portal"
+      },
+      {
+        "r": 1,
+        "c": 3,
+        "type": "portal"
+      }
+    ]
+  },
+  {
+    "id": "ch5_11",
+    "chapter": 5,
+    "stageNumber": 71,
+    "title": "Aliran Cahaya",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 12,
+    "start": {
+      "r": 1,
+      "c": 6
+    },
+    "goal": {
+      "r": 4,
+      "c": 2
+    },
+    "yuzus": [
+      {
+        "r": 5,
+        "c": 1
+      },
+      {
+        "r": 1,
+        "c": 3
+      },
+      {
+        "r": 4,
+        "c": 4
+      }
+    ],
+    "tiles": [
+      {
+        "r": 0,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 4,
+        "type": "mud"
+      },
+      {
+        "r": 4,
+        "c": 0,
+        "type": "ice"
+      },
+      {
+        "r": 6,
+        "c": 3,
+        "type": "ice"
+      },
+      {
+        "r": 3,
+        "c": 2,
+        "type": "stream_up"
+      },
+      {
+        "r": 2,
+        "c": 2,
+        "type": "portal"
+      },
+      {
+        "r": 4,
+        "c": 5,
+        "type": "portal"
+      },
+      {
+        "r": 0,
+        "c": 2,
+        "type": "button"
+      },
+      {
+        "r": 4,
+        "c": 6,
+        "type": "gate"
+      },
+      {
+        "r": 6,
+        "c": 2,
+        "type": "gate"
+      }
+    ]
+  },
+  {
+    "id": "ch5_12",
+    "chapter": 5,
+    "stageNumber": 72,
+    "title": "Gerbang Festival",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 5,
+    "start": {
+      "r": 2,
+      "c": 1
+    },
+    "goal": {
+      "r": 5,
+      "c": 5
+    },
+    "yuzus": [
+      {
+        "r": 6,
+        "c": 4
+      },
+      {
+        "r": 5,
+        "c": 3
+      },
+      {
+        "r": 5,
+        "c": 2
+      }
+    ],
+    "tiles": [
+      {
+        "r": 3,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 5,
+        "type": "mud"
+      },
+      {
+        "r": 3,
+        "c": 1,
+        "type": "log"
+      },
+      {
+        "r": 4,
+        "c": 1,
+        "type": "ice"
+      },
+      {
+        "r": 2,
+        "c": 3,
+        "type": "ice"
+      },
+      {
+        "r": 4,
+        "c": 3,
+        "type": "stream_down"
+      },
+      {
+        "r": 3,
+        "c": 5,
+        "type": "portal"
+      },
+      {
+        "r": 1,
+        "c": 4,
+        "type": "portal"
+      }
+    ]
+  },
+  {
+    "id": "ch5_13",
+    "chapter": 5,
+    "stageNumber": 73,
+    "title": "Melodi Malam",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 9,
+    "start": {
+      "r": 6,
+      "c": 2
+    },
+    "goal": {
+      "r": 3,
+      "c": 4
+    },
+    "yuzus": [
+      {
+        "r": 3,
+        "c": 2
+      },
+      {
+        "r": 0,
+        "c": 5
+      },
+      {
+        "r": 2,
+        "c": 0
+      }
+    ],
+    "tiles": [
+      {
+        "r": 1,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 6,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 0,
+        "type": "mud"
+      },
+      {
+        "r": 2,
+        "c": 6,
+        "type": "ice"
+      },
+      {
+        "r": 5,
+        "c": 6,
+        "type": "ice"
+      },
+      {
+        "r": 2,
+        "c": 1,
+        "type": "stream_right"
+      },
+      {
+        "r": 2,
+        "c": 4,
+        "type": "portal"
+      },
+      {
+        "r": 1,
+        "c": 2,
+        "type": "portal"
+      },
+      {
+        "r": 4,
+        "c": 3,
+        "type": "button"
+      },
+      {
+        "r": 5,
+        "c": 0,
+        "type": "gate"
+      },
+      {
+        "r": 5,
+        "c": 3,
+        "type": "gate"
+      }
+    ]
+  },
+  {
+    "id": "ch5_14",
+    "chapter": 5,
+    "stageNumber": 74,
+    "title": "Harmoni Onsen",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 5,
+    "start": {
+      "r": 5,
+      "c": 0
+    },
+    "goal": {
+      "r": 1,
+      "c": 4
+    },
+    "yuzus": [
+      {
+        "r": 0,
+        "c": 4
+      },
+      {
+        "r": 0,
+        "c": 1
+      },
+      {
+        "r": 0,
+        "c": 5
+      }
+    ],
+    "tiles": [
+      {
+        "r": 3,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 0,
+        "type": "mud"
+      },
+      {
+        "r": 3,
+        "c": 5,
+        "type": "log"
+      },
+      {
+        "r": 6,
+        "c": 5,
+        "type": "ice"
+      },
+      {
+        "r": 4,
+        "c": 0,
+        "type": "ice"
+      },
+      {
+        "r": 5,
+        "c": 4,
+        "type": "stream_right"
+      },
+      {
+        "r": 5,
+        "c": 2,
+        "type": "portal"
+      },
+      {
+        "r": 2,
+        "c": 5,
+        "type": "portal"
+      }
+    ]
+  },
+  {
+    "id": "ch5_15",
+    "chapter": 5,
+    "stageNumber": 75,
+    "title": "Raja Capybara",
+    "gridSize": {
+      "rows": 7,
+      "cols": 7
+    },
+    "parMoves": 7,
+    "start": {
+      "r": 6,
+      "c": 3
+    },
+    "goal": {
+      "r": 0,
+      "c": 3
+    },
+    "yuzus": [
+      {
+        "r": 6,
+        "c": 0
+      },
+      {
+        "r": 3,
+        "c": 6
+      },
+      {
+        "r": 2,
+        "c": 3
+      }
+    ],
+    "tiles": [
+      {
+        "r": 0,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 3,
+        "type": "gate"
+      },
+      {
+        "r": 5,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 6,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 0,
+        "type": "portal"
+      },
+      {
+        "r": 3,
+        "c": 4,
+        "type": "portal"
+      },
+      {
+        "r": 6,
+        "c": 5,
+        "type": "button"
+      },
+      {
+        "r": 4,
+        "c": 5,
+        "type": "stream_left"
+      },
+      {
+        "r": 4,
+        "c": 4,
+        "type": "ice"
+      }
+    ]
+  }
+]

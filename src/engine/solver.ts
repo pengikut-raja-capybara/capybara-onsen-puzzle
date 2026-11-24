@@ -27,6 +27,7 @@ export function createInitialState(level: LevelConfig): GameState {
     capybara: { ...level.start },
     logs,
     collectedYuzus: [],
+    brokenIce: [],
     gateOpen: false,
     moves: 0,
     won: false,
@@ -42,6 +43,13 @@ function getStaticTileAt(level: LevelConfig, r: number, c: number): TileType | n
   return null;
 }
 
+function findOtherPortal(level: LevelConfig, r: number, c: number): Position | null {
+  const portals = level.tiles.filter((t) => t.type === 'portal');
+  if (portals.length < 2) return null;
+  const other = portals.find((p) => p.r !== r || p.c !== c);
+  return other ? { r: other.r, c: other.c } : null;
+}
+
 function findLogIndexAt(logs: Position[], r: number, c: number): number {
   return logs.findIndex((l) => l.r === r && l.c === c);
 }
@@ -50,9 +58,14 @@ function isInBounds(level: LevelConfig, r: number, c: number): boolean {
   return r >= 0 && r < level.gridSize.rows && c >= 0 && c < level.gridSize.cols;
 }
 
-function isBlockingTile(tile: TileType | null, gateOpen: boolean): boolean {
+function isBlockingTile(
+  tile: TileType | null,
+  gateOpen: boolean,
+  isBrokenIce: boolean
+): boolean {
   if (tile === 'rock') return true;
   if (tile === 'gate' && !gateOpen) return true;
+  if (tile === 'ice' && isBrokenIce) return true;
   return false;
 }
 
@@ -64,7 +77,13 @@ export function stepMove(level: LevelConfig, state: GameState, initialDir: Direc
       hitObstacle: false,
       pushedLog: false,
       collectedYuzu: false,
+      collectedYuzuSteps: [],
       openedGate: false,
+      openedGateStep: null,
+      crackedIce: false,
+      crackedIceSteps: [],
+      teleported: false,
+      stoppedByMud: false,
       path: [],
     };
   }
@@ -74,13 +93,21 @@ export function stepMove(level: LevelConfig, state: GameState, initialDir: Direc
   let dir = initialDir;
   const logs = state.logs.map((l) => ({ ...l }));
   const collectedSet = new Set(state.collectedYuzus);
+  const brokenIceSet = new Set(state.brokenIce);
   let gateOpen = state.gateOpen;
 
   let moved = false;
   let hitObstacle = false;
   let pushedLog = false;
+  let pushedLogMove: { from: Position; to: Position } | undefined;
   let collectedYuzu = false;
+  const collectedYuzuSteps: Array<{ key: string; stepIndex: number }> = [];
   let openedGate = false;
+  let openedGateStep: number | null = null;
+  let crackedIce = false;
+  const crackedIceSteps: Array<{ key: string; stepIndex: number }> = [];
+  let teleported = false;
+  let stoppedByMud = false;
   const path: Position[] = [];
 
   const visitedStepStates = new Set<string>();
@@ -97,7 +124,8 @@ export function stepMove(level: LevelConfig, state: GameState, initialDir: Direc
     }
 
     const staticTile = getStaticTileAt(level, nr, nc);
-    if (isBlockingTile(staticTile, gateOpen)) {
+    const nKey = `${nr},${nc}`;
+    if (isBlockingTile(staticTile, gateOpen, brokenIceSet.has(nKey))) {
       hitObstacle = true;
       break;
     }
@@ -107,26 +135,38 @@ export function stepMove(level: LevelConfig, state: GameState, initialDir: Direc
       // Try to push the log 1 cell forward
       const pushR = nr + delta.r;
       const pushC = nc + delta.c;
-      const pushTile = isInBounds(level, pushR, pushC) ? getStaticTileAt(level, pushR, pushC) : null;
+      const pushKey = `${pushR},${pushC}`;
+      const pushTile = isInBounds(level, pushR, pushC)
+        ? getStaticTileAt(level, pushR, pushC)
+        : null;
       const canPush =
         isInBounds(level, pushR, pushC) &&
-        !isBlockingTile(pushTile, gateOpen) &&
+        !isBlockingTile(pushTile, gateOpen, brokenIceSet.has(pushKey)) &&
         findLogIndexAt(logs, pushR, pushC) === -1 &&
         !samePos({ r: pushR, c: pushC }, level.goal) &&
-        pushTile !== 'button';
+        pushTile !== 'button' &&
+        pushTile !== 'portal' &&
+        pushTile !== 'ice';
 
       if (canPush) {
         logs[logIdx] = { r: pushR, c: pushC };
+        pushedLogMove = { from: { r: nr, c: nc }, to: { r: pushR, c: pushC } };
         curR = nr;
         curC = nc;
         moved = true;
         pushedLog = true;
         path.push({ r: curR, c: curC });
-        // Capybara stops after pushing a log
+        const stepIdx = path.length - 1;
+        if (staticTile === 'ice' && !brokenIceSet.has(nKey)) {
+          brokenIceSet.add(nKey);
+          crackedIce = true;
+          crackedIceSteps.push({ key: nKey, stepIndex: stepIdx });
+        }
         const yKey = posKey({ r: curR, c: curC });
         if (level.yuzus.some((y) => y.r === curR && y.c === curC) && !collectedSet.has(yKey)) {
           collectedSet.add(yKey);
           collectedYuzu = true;
+          collectedYuzuSteps.push({ key: yKey, stepIndex: stepIdx });
         }
         break;
       } else {
@@ -140,12 +180,21 @@ export function stepMove(level: LevelConfig, state: GameState, initialDir: Direc
     curC = nc;
     moved = true;
     path.push({ r: curR, c: curC });
+    const stepIdx = path.length - 1;
+
+    // Crack thin ice once stepped on
+    if (staticTile === 'ice' && !brokenIceSet.has(nKey)) {
+      brokenIceSet.add(nKey);
+      crackedIce = true;
+      crackedIceSteps.push({ key: nKey, stepIndex: stepIdx });
+    }
 
     // Collect Yuzu if present
     const yKey = posKey({ r: curR, c: curC });
     if (level.yuzus.some((y) => y.r === curR && y.c === curC) && !collectedSet.has(yKey)) {
       collectedSet.add(yKey);
       collectedYuzu = true;
+      collectedYuzuSteps.push({ key: yKey, stepIndex: stepIdx });
     }
 
     // Check Goal (Onsen)
@@ -155,6 +204,7 @@ export function stepMove(level: LevelConfig, state: GameState, initialDir: Direc
           capybara: { r: curR, c: curC },
           logs,
           collectedYuzus: Array.from(collectedSet),
+          brokenIce: Array.from(brokenIceSet),
           gateOpen,
           moves: state.moves + 1,
           won: true,
@@ -162,8 +212,15 @@ export function stepMove(level: LevelConfig, state: GameState, initialDir: Direc
         moved: true,
         hitObstacle: false,
         pushedLog,
+        pushedLogMove,
         collectedYuzu,
+        collectedYuzuSteps,
         openedGate,
+        openedGateStep,
+        crackedIce,
+        crackedIceSteps,
+        teleported,
+        stoppedByMud: false,
         path,
       };
     }
@@ -172,11 +229,36 @@ export function stepMove(level: LevelConfig, state: GameState, initialDir: Direc
     if (staticTile === 'button' && !gateOpen) {
       gateOpen = true;
       openedGate = true;
+      openedGateStep = stepIdx;
     }
 
     // Check Mud (stops capybara)
     if (staticTile === 'mud') {
+      stoppedByMud = true;
       break;
+    }
+
+    // Check Portal (teleports capybara to paired portal and continues sliding)
+    if (staticTile === 'portal') {
+      const target = findOtherPortal(level, curR, curC);
+      if (target && findLogIndexAt(logs, target.r, target.c) === -1) {
+        curR = target.r;
+        curC = target.c;
+        teleported = true;
+        path.push({ r: curR, c: curC });
+        const portalStepIdx = path.length - 1;
+        const tKey = posKey({ r: curR, c: curC });
+        if (level.yuzus.some((y) => y.r === curR && y.c === curC) && !collectedSet.has(tKey)) {
+          collectedSet.add(tKey);
+          collectedYuzu = true;
+          collectedYuzuSteps.push({ key: tKey, stepIndex: portalStepIdx });
+        }
+        const portalStepKey = `${curR},${curC},${dir}`;
+        if (visitedStepStates.has(portalStepKey)) {
+          break;
+        }
+        visitedStepStates.add(portalStepKey);
+      }
     }
 
     // Check Stream (redirects capybara)
@@ -184,7 +266,6 @@ export function stepMove(level: LevelConfig, state: GameState, initialDir: Direc
       dir = STREAM_DIR[staticTile]!;
       const stepKey = `${curR},${curC},${dir}`;
       if (visitedStepStates.has(stepKey)) {
-        // Prevent infinite stream loop
         break;
       }
       visitedStepStates.add(stepKey);
@@ -198,7 +279,13 @@ export function stepMove(level: LevelConfig, state: GameState, initialDir: Direc
       hitObstacle,
       pushedLog: false,
       collectedYuzu: false,
+      collectedYuzuSteps: [],
       openedGate: false,
+      openedGateStep: null,
+      crackedIce: false,
+      crackedIceSteps: [],
+      teleported: false,
+      stoppedByMud: false,
       path: [],
     };
   }
@@ -208,6 +295,7 @@ export function stepMove(level: LevelConfig, state: GameState, initialDir: Direc
       capybara: { r: curR, c: curC },
       logs,
       collectedYuzus: Array.from(collectedSet),
+      brokenIce: Array.from(brokenIceSet),
       gateOpen,
       moves: state.moves + 1,
       won: false,
@@ -215,8 +303,15 @@ export function stepMove(level: LevelConfig, state: GameState, initialDir: Direc
     moved: true,
     hitObstacle,
     pushedLog,
+    pushedLogMove,
     collectedYuzu,
+    collectedYuzuSteps,
     openedGate,
+    openedGateStep,
+    crackedIce,
+    crackedIceSteps,
+    teleported,
+    stoppedByMud,
     path,
   };
 }
@@ -241,7 +336,8 @@ export function calculateStars(level: LevelConfig, state: GameState): number {
 function serializeState(s: GameState): string {
   const logsStr = s.logs.map((l) => `${l.r},${l.c}`).join(';');
   const yuzuStr = [...s.collectedYuzus].sort().join(';');
-  return `${s.capybara.r},${s.capybara.c}|${s.gateOpen ? 1 : 0}|${logsStr}|${yuzuStr}`;
+  const iceStr = [...s.brokenIce].sort().join(';');
+  return `${s.capybara.r},${s.capybara.c}|${s.gateOpen ? 1 : 0}|${logsStr}|${yuzuStr}|${iceStr}`;
 }
 
 export interface BfsSolution {
@@ -249,6 +345,7 @@ export interface BfsSolution {
   minMoves: number;
   directions: Direction[];
   allYuzusMoves: number | null;
+  allYuzusDirections: Direction[] | null;
 }
 
 export function solveLevelBFS(
@@ -258,7 +355,13 @@ export function solveLevelBFS(
 ): BfsSolution {
   const start = initialState ?? createInitialState(level);
   if (start.won) {
-    return { solvable: true, minMoves: 0, directions: [], allYuzusMoves: 0 };
+    return {
+      solvable: true,
+      minMoves: 0,
+      directions: [],
+      allYuzusMoves: 0,
+      allYuzusDirections: start.collectedYuzus.length >= level.yuzus.length ? [] : null,
+    };
   }
 
   const dirs: Direction[] = ['up', 'down', 'left', 'right'];
@@ -291,8 +394,9 @@ export function solveLevelBFS(
           return {
             solvable: true,
             minMoves: firstWin.moves,
-            directions: firstWin.path,
+            directions: nextPath,
             allYuzusMoves,
+            allYuzusDirections: nextPath,
           };
         }
         continue;
@@ -312,6 +416,7 @@ export function solveLevelBFS(
       minMoves: firstWin.moves,
       directions: firstWin.path,
       allYuzusMoves,
+      allYuzusDirections: null,
     };
   }
 
@@ -320,5 +425,6 @@ export function solveLevelBFS(
     minMoves: -1,
     directions: [],
     allYuzusMoves: null,
+    allYuzusDirections: null,
   };
 }

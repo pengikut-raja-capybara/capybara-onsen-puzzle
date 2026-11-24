@@ -14,7 +14,19 @@ export type TileType =
   | 'stream_left'
   | 'stream_right'
   | 'button'
-  | 'gate';
+  | 'gate'
+  | 'ice'
+  | 'portal';
+
+export type HatId = 'none' | 'yuzu' | 'towel' | 'sakura' | 'bamboo_hat' | 'crown';
+
+export type DecorationId =
+  | 'rubber_duck'
+  | 'bamboo_fountain'
+  | 'floating_yuzus'
+  | 'sakura_branch'
+  | 'paper_lantern'
+  | 'baby_capy';
 
 export interface TilePlacement {
   r: number;
@@ -54,6 +66,7 @@ export interface GameState {
   capybara: Position;
   logs: Position[];
   collectedYuzus: string[]; // "r,c" keys
+  brokenIce: string[]; // "r,c" keys of cracked/melted ice tiles
   gateOpen: boolean;
   moves: number;
   won: boolean;
@@ -64,7 +77,14 @@ export interface MoveResult {
   moved: boolean;
   hitObstacle: boolean;
   pushedLog: boolean;
+  pushedLogMove?: { from: Position; to: Position };
   collectedYuzu: boolean;
+  collectedYuzuSteps?: Array<{ key: string; stepIndex: number }>;
   openedGate: boolean;
+  openedGateStep?: number | null;
+  crackedIce: boolean;
+  crackedIceSteps?: Array<{ key: string; stepIndex: number }>;
+  teleported: boolean;
+  stoppedByMud?: boolean;
   path: Position[];
 }

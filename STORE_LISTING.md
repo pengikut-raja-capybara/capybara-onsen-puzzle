@@ -29,13 +29,19 @@ Bantu Capybara yang menggemaskan mencapai kolam air hangat (Onsen) dalam game pu
 Capybara Onsen: Puzzle adalah permainan asah otak ringan yang dirancang untuk menemani waktu santai Anda kapan saja dan di mana saja. Geser (swipe) atau gunakan tombol arah untuk meluncurkan Capybara melewati rintangan, mengumpulkan jeruk Yuzu segar, dan berendam dengan nyaman di kolam Onsen.
 
 ✨ FITUR UTAMA:
-• 45 Stage Seru dalam 3 Chapter Bertema:
+• 75 Stage Seru dalam 5 Chapter Bertema (termasuk 5 Showcase Finale):
   1. Kolam Onsen Hangat — Pelajari dasar luncuran, batu penghalang, dan lumpur hangat.
   2. Kebun Jeruk Yuzu — Dorong batang kayu dan temukan jalur cerdas menuju jeruk Yuzu.
   3. Sungai Bambu Tenang — Manfaatkan arus air sungai dan buka gerbang bambu.
-• Kontrol Nyaman: Bisa dimainkan dengan usapan jari (swipe) langsung di papan atau menggunakan tombol arah (D-pad) yang nyaman untuk satu tangan.
+  4. Puncak Salju Onsen — Lintasi petak es tipis yang retak dan mencair setelah dilewati.
+  5. Malam Lentera — Gunakan pusaran portal di bawah cahaya lentera malam.
+• Kolam Onsen Interaktif (6 Dekorasi Hidup): Sentuh Capybara untuk partikel hati & kutipan menenangkan, lalu hias kolam dengan 6 dekorasi yang terbuka seiring progres.
+• Kalender Stempel Hanko Harian & Mode Zen Santai: Tandai hari bermain di kalender tinta Hanko bulanan tanpa tekanan streak putus, atau bersantai di Mode Zen (puzzle ringan tanpa target langkah maupun rating bintang).
+• Puzzle Harian & Acak: Nikmati puzzle prosedural baru setiap hari atau mainkan tantangan acak kapan saja.
+• Koleksi Aksesori, Dekorasi & Buku Stempel: Kumpulkan bintang untuk membuka topi lucu (Handuk Onsen, Sakura, Caping Bambu, Mahkota), 6 dekorasi kolam, dan stempel pencapaian bergaya Goshuincho.
+• Kontrol Nyaman: Mainkan lewat usapan jari (swipe) dengan pratinjau jalur, atau aktifkan tombol arah (D-pad) opsional untuk satu tangan.
 • Fitur Undo & Hint Pintar: Salah langkah? Gunakan Undo kapan saja, atau tekan tombol Hint untuk mendapatkan petunjuk langkah terbaik secara instan.
-• Musik Latar Kalimba & Suara Menenangkan: Dilengkapi musik latar (BGM) bernuansa Onsen yang menenangkan dan efek suara lembut.
+• Musik Latar Kalimba & Suara Alam Menenangkan: Dilengkapi musik latar (BGM) bernuansa Onsen, ambience air/alam, dan efek suara lembut.
 • 100% Offline & Bebas Iklan: Mainkan tanpa koneksi internet, tanpa gangguan iklan, dan tanpa izin perangkat yang aneh-aneh.
 
 Dikembangkan oleh: Pengikut Raja Capybara
@@ -59,13 +65,19 @@ Guide an adorable Capybara to the warm hot spring (Onsen) in this relaxing, cozy
 Capybara Onsen: Puzzle is a lightweight brain-teaser designed for pure relaxation anytime, anywhere. Swipe on the board or use the comfortable D-pad controls to slide the Capybara past rocks, mud patches, wooden logs, and river currents while collecting fresh Yuzu oranges on your way to the steaming Onsen bath.
 
 ✨ KEY FEATURES:
-• 45 Handcrafted & Verified Stages across 3 Themed Chapters:
+• 75 Handcrafted & Verified Stages across 5 Themed Chapters (including 5 Showcase Finales):
   1. Warm Onsen Pool — Master sliding mechanics, river stones, and cozy mud stops.
   2. Yuzu Citrus Grove — Push wooden logs to create clever stopping points.
   3. Calm Bamboo River — Ride water currents and trigger stone switches to open bamboo gates.
-• Flexible Controls: Play effortlessly with direct board swipes or the ergonomic bottom D-pad.
+  4. Snowy Onsen Peak — Glide across thin ice tiles that crack and melt behind you.
+  5. Lantern Night — Traverse whirlpool portals under glowing festival lanterns.
+• Interactive Onsen Sanctuary (6 Pool Decorations): Pet the capybara for floating heart particles & soothing quotes, and customize the pool with 6 unlockable decorations.
+• Monthly Hanko Calendar & Stress-Free Zen Mode: Mark playdays in your monthly Japanese Hanko stamp calendar without harsh streak resets, or unwind in Zen Mode (gentle 5×5 puzzles with no par moves or star ratings).
+• Daily & Random Puzzles: Enjoy a fresh daily procedural puzzle or endless random stages anytime.
+• Accessories, Pool Decor & Stamp Book: Unlock cozy headgear (Onsen Towel, Sakura, Bamboo Hat, Royal Crown), 6 pool decorations, and Goshuincho-style achievement stamps.
+• Flexible Controls: Play effortlessly with direct board swipes and trajectory previews, or toggle the optional D-pad.
 • Unlimited Undo & Smart Hint: Step back anytime with Undo, or tap Hint for an instant optimal move suggestion.
-• Soothing Kalimba Music & SFX: Enjoy a gentle pentatonic soundtrack and soft tactile feedback.
+• Soothing Kalimba Music, Nature Ambience & SFX: Enjoy a gentle pentatonic soundtrack, calming water/nature ambience, and soft tactile feedback.
 • 100% Offline & Ad-Free: Play completely offline with zero ads, zero tracking, and no unnecessary permissions.
 
 Developed by: Pengikut Raja Capybara

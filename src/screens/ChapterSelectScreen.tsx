@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Pressable,
   ScrollView,
@@ -6,26 +6,34 @@ import {
   Text,
   View,
 } from 'react-native';
-import { CHAPTERS, getLevelsForChapter } from '../data/chapters';
+import {
+  CHAPTERS,
+  getLevelsForChapter,
+  isChapterUnlocked,
+} from '../data/chapters';
 import { UI_TEXT, getChapterText } from '../i18n/translations';
 import { PlayerProgress, getTotalStars } from '../storage/progress';
 import { CHAPTER_PALETTES, FONTS, PALETTE, RADIUS, SHADOWS } from '../theme';
+import { playSfx, triggerHaptic } from '../utils/sound';
 import { BackIcon, LockIcon } from '../components/svg/Icons';
 import { StarSvg } from '../components/svg/TileSvg';
 import { ScreenBackground } from '../components/ui/ScreenBackground';
 
 interface ChapterSelectScreenProps {
   progress: PlayerProgress;
+  selectedChapterId: number;
+  onSelectChapter: (chapterId: number) => void;
   onSelectLevel: (levelId: string) => void;
   onBack: () => void;
 }
 
 export const ChapterSelectScreen: React.FC<ChapterSelectScreenProps> = ({
   progress,
+  selectedChapterId,
+  onSelectChapter,
   onSelectLevel,
   onBack,
 }) => {
-  const [selectedChapterId, setSelectedChapterId] = useState<number>(1);
   const totalStars = getTotalStars(progress);
   const t = UI_TEXT[progress.language];
 
@@ -39,23 +47,43 @@ export const ChapterSelectScreen: React.FC<ChapterSelectScreenProps> = ({
   );
   const palette = CHAPTER_PALETTES[selectedChapter.id] ?? CHAPTER_PALETTES[1];
   const levels = getLevelsForChapter(selectedChapter.id);
-  const chapterUnlocked = totalStars >= selectedChapter.unlockStarsRequired;
+  const chapterUnlocked = isChapterUnlocked(
+    selectedChapter.id,
+    progress.starsByLevel,
+    totalStars,
+    progress.devUnlockAll
+  );
+
+  const clearedInChapter = levels.filter(
+    (lv) => (progress.starsByLevel[lv.id] ?? 0) > 0
+  ).length;
+  const starsInChapter = levels.reduce(
+    (sum, lv) => sum + (progress.starsByLevel[lv.id] ?? 0),
+    0
+  );
+  const maxChapterStars = levels.length * 3;
 
   return (
     <ScreenBackground
       chapterId={selectedChapterId}
       reduceMotion={progress.reduceMotion}
+      hapticsEnabled={progress.hapticsEnabled}
     >
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.header}>
           <Pressable
+            accessibilityLabel={t.backBtnLabel}
             style={({ pressed }) => [
               styles.backBtn,
               SHADOWS.soft,
               pressed && { transform: [{ scale: 0.94 }] },
             ]}
-            onPress={onBack}
+            onPress={() => {
+              playSfx('tap', progress.soundEnabled);
+              triggerHaptic('light', progress.hapticsEnabled);
+              onBack();
+            }}
           >
             <BackIcon size={22} color={PALETTE.espresso} />
           </Pressable>
@@ -72,7 +100,12 @@ export const ChapterSelectScreen: React.FC<ChapterSelectScreenProps> = ({
         <View style={styles.chapterTabs}>
           {CHAPTERS.map((ch) => {
             const isActive = ch.id === selectedChapterId;
-            const isUnlocked = totalStars >= ch.unlockStarsRequired;
+            const isUnlocked = isChapterUnlocked(
+              ch.id,
+              progress.starsByLevel,
+              totalStars,
+              progress.devUnlockAll
+            );
             return (
               <Pressable
                 key={ch.id}
@@ -84,7 +117,11 @@ export const ChapterSelectScreen: React.FC<ChapterSelectScreenProps> = ({
                     borderColor: ch.themeColor,
                   },
                 ]}
-                onPress={() => setSelectedChapterId(ch.id)}
+                onPress={() => {
+                  playSfx('tap', progress.soundEnabled);
+                  triggerHaptic('light', progress.hapticsEnabled);
+                  onSelectChapter(ch.id);
+                }}
               >
                 {!isUnlocked && (
                   <LockIcon
@@ -115,13 +152,21 @@ export const ChapterSelectScreen: React.FC<ChapterSelectScreenProps> = ({
         >
           <Text style={styles.bannerTitle}>{chapterText.title}</Text>
           <Text style={styles.bannerSub}>{chapterText.subtitle}</Text>
+          <Text style={styles.bannerProgress}>
+            {t.chapterProgressLine(
+              clearedInChapter,
+              levels.length,
+              starsInChapter,
+              maxChapterStars
+            )}
+          </Text>
           {!chapterUnlocked && (
             <View style={styles.lockBanner}>
               <LockIcon size={14} color="#7B241C" />
               <Text style={styles.lockText}>
-                {t.chapterLockInfo(
+                {t.chapterUnlockHintAlt(
                   selectedChapter.unlockStarsRequired,
-                  selectedChapter.unlockStarsRequired - totalStars
+                  Math.max(0, selectedChapter.unlockStarsRequired - totalStars)
                 )}
               </Text>
             </View>
@@ -140,7 +185,8 @@ export const ChapterSelectScreen: React.FC<ChapterSelectScreenProps> = ({
               ? (progress.starsByLevel[prevLevel.id] ?? 0) > 0
               : false;
             const isStageUnlocked =
-              chapterUnlocked && (idx === 0 || prevCleared);
+              progress.devUnlockAll ||
+              (chapterUnlocked && (idx === 0 || prevCleared));
             const isCurrentActive = isStageUnlocked && stars === 0;
 
             return (
@@ -157,7 +203,11 @@ export const ChapterSelectScreen: React.FC<ChapterSelectScreenProps> = ({
                   !isStageUnlocked && styles.stageCardLocked,
                   pressed && isStageUnlocked && { transform: [{ scale: 0.95 }] },
                 ]}
-                onPress={() => onSelectLevel(lv.id)}
+                onPress={() => {
+                  playSfx('tap', progress.soundEnabled);
+                  triggerHaptic('light', progress.hapticsEnabled);
+                  onSelectLevel(lv.id);
+                }}
               >
                 {isStageUnlocked ? (
                   <Text style={styles.stageNum}>{lv.stageNumber}</Text>
@@ -263,6 +313,12 @@ const styles = StyleSheet.create({
     color: PALETTE.espressoSoft,
     marginTop: 2,
   },
+  bannerProgress: {
+    fontFamily: FONTS.semiBold,
+    fontSize: 12,
+    color: PALETTE.espresso,
+    marginTop: 6,
+  },
   lockBanner: {
     marginTop: 10,
     flexDirection: 'row',
@@ -274,6 +330,7 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.sm,
   },
   lockText: {
+    flex: 1,
     fontFamily: FONTS.semiBold,
     fontSize: 12,
     color: '#7B241C',

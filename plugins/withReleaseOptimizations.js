@@ -1,6 +1,21 @@
-const { withGradleProperties } = require('expo/config-plugins');
+const {
+  AndroidConfig,
+  withAndroidStyles,
+  withGradleProperties,
+} = require('expo/config-plugins');
 
 module.exports = function withReleaseOptimizations(config) {
+  config = withAndroidStyles(config, (cfg) => {
+    cfg.modResults = AndroidConfig.Styles.assignStylesValue(cfg.modResults, {
+      add: true,
+      parent: AndroidConfig.Styles.getAppThemeGroup(),
+      name: 'android:forceDarkAllowed',
+      value: 'false',
+      targetApi: '29',
+    });
+    return cfg;
+  });
+
   return withGradleProperties(config, (config) => {
     const setProp = (key, value) => {
       const idx = config.modResults.findIndex(

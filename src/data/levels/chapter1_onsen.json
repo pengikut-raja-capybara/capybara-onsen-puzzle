@@ -4,7 +4,7 @@
     "chapter": 1,
     "stageNumber": 1,
     "title": "Langkah Pertama",
-    "hintText": "Geser (swipe) ke kanan, lalu ke bawah menuju kolam Onsen!",
+    "hintText": "Geser (swipe) ke kanan lalu ke bawah untuk mengambil Yuzu dan menuju Onsen!",
     "gridSize": {
       "rows": 5,
       "cols": 5
@@ -31,7 +31,7 @@
     "chapter": 1,
     "stageNumber": 2,
     "title": "Batu Penghalang",
-    "hintText": "Batu menghentikan luncuranmu. Manfaatkan batu untuk berbelok!",
+    "hintText": "Batu menghentikan luncuranmu. Manfaatkan batu untuk berbelok ke Onsen!",
     "gridSize": {
       "rows": 5,
       "cols": 5
@@ -58,13 +58,13 @@
         "type": "rock"
       },
       {
-        "r": 2,
-        "c": 1,
+        "r": 3,
+        "c": 2,
         "type": "rock"
       },
       {
         "r": 3,
-        "c": 2,
+        "c": 4,
         "type": "rock"
       }
     ]
@@ -79,7 +79,7 @@
       "rows": 5,
       "cols": 5
     },
-    "parMoves": 2,
+    "parMoves": 3,
     "start": {
       "r": 0,
       "c": 0
@@ -97,6 +97,16 @@
     "tiles": [
       {
         "r": 0,
+        "c": 2,
+        "type": "mud"
+      },
+      {
+        "r": 2,
+        "c": 0,
+        "type": "mud"
+      },
+      {
+        "r": 2,
         "c": 2,
         "type": "mud"
       },
@@ -118,43 +128,43 @@
     },
     "parMoves": 4,
     "start": {
-      "r": 2,
+      "r": 0,
       "c": 0
     },
     "goal": {
-      "r": 1,
-      "c": 4
+      "r": 4,
+      "c": 0
     },
     "yuzus": [
       {
-        "r": 0,
-        "c": 0
+        "r": 2,
+        "c": 2
       }
     ],
     "tiles": [
       {
         "r": 0,
-        "c": 3,
-        "type": "rock"
-      },
-      {
-        "r": 1,
         "c": 2,
         "type": "rock"
       },
       {
-        "r": 2,
-        "c": 3,
+        "r": 3,
+        "c": 0,
         "type": "rock"
+      },
+      {
+        "r": 3,
+        "c": 1,
+        "type": "mud"
+      },
+      {
+        "r": 0,
+        "c": 3,
+        "type": "mud"
       },
       {
         "r": 1,
-        "c": 3,
-        "type": "rock"
-      },
-      {
-        "r": 4,
-        "c": 0,
+        "c": 4,
         "type": "mud"
       }
     ]
@@ -168,18 +178,122 @@
       "rows": 5,
       "cols": 5
     },
-    "parMoves": 5,
+    "parMoves": 3,
     "start": {
-      "r": 3,
-      "c": 1
+      "r": 1,
+      "c": 2
     },
     "goal": {
-      "r": 2,
-      "c": 3
+      "r": 4,
+      "c": 1
     },
     "yuzus": [
       {
         "r": 4,
+        "c": 4
+      }
+    ],
+    "tiles": [
+      {
+        "r": 1,
+        "c": 4,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 3,
+        "type": "mud"
+      },
+      {
+        "r": 1,
+        "c": 1,
+        "type": "mud"
+      },
+      {
+        "r": 0,
+        "c": 0,
+        "type": "mud"
+      }
+    ]
+  },
+  {
+    "id": "ch1_06",
+    "chapter": 1,
+    "stageNumber": 6,
+    "title": "Batu Sungai",
+    "gridSize": {
+      "rows": 5,
+      "cols": 5
+    },
+    "parMoves": 3,
+    "start": {
+      "r": 3,
+      "c": 2
+    },
+    "goal": {
+      "r": 1,
+      "c": 0
+    },
+    "yuzus": [
+      {
+        "r": 0,
+        "c": 2
+      }
+    ],
+    "tiles": [
+      {
+        "r": 1,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 1,
+        "type": "mud"
+      },
+      {
+        "r": 0,
+        "c": 0,
+        "type": "mud"
+      },
+      {
+        "r": 2,
+        "c": 0,
+        "type": "mud"
+      }
+    ]
+  },
+  {
+    "id": "ch1_07",
+    "chapter": 1,
+    "stageNumber": 7,
+    "title": "Jeruk Pertama",
+    "gridSize": {
+      "rows": 5,
+      "cols": 5
+    },
+    "parMoves": 4,
+    "start": {
+      "r": 1,
+      "c": 2
+    },
+    "goal": {
+      "r": 0,
+      "c": 1
+    },
+    "yuzus": [
+      {
+        "r": 2,
         "c": 4
       }
     ],
@@ -195,126 +309,17 @@
         "type": "rock"
       },
       {
-        "r": 2,
-        "c": 2,
-        "type": "rock"
-      },
-      {
         "r": 1,
-        "c": 4,
-        "type": "rock"
-      },
-      {
-        "r": 4,
-        "c": 3,
-        "type": "mud"
-      }
-    ]
-  },
-  {
-    "id": "ch1_06",
-    "chapter": 1,
-    "stageNumber": 6,
-    "title": "Batu Sungai",
-    "gridSize": {
-      "rows": 5,
-      "cols": 5
-    },
-    "parMoves": 8,
-    "start": {
-      "r": 0,
-      "c": 3
-    },
-    "goal": {
-      "r": 4,
-      "c": 0
-    },
-    "yuzus": [
-      {
-        "r": 4,
-        "c": 3
-      }
-    ],
-    "tiles": [
-      {
-        "r": 3,
-        "c": 2,
-        "type": "rock"
-      },
-      {
-        "r": 1,
-        "c": 3,
-        "type": "rock"
-      },
-      {
-        "r": 2,
-        "c": 1,
-        "type": "rock"
-      },
-      {
-        "r": 4,
-        "c": 1,
-        "type": "rock"
-      },
-      {
-        "r": 0,
         "c": 1,
         "type": "mud"
-      }
-    ]
-  },
-  {
-    "id": "ch1_07",
-    "chapter": 1,
-    "stageNumber": 7,
-    "title": "Jeruk Pertama",
-    "gridSize": {
-      "rows": 5,
-      "cols": 5
-    },
-    "parMoves": 3,
-    "start": {
-      "r": 3,
-      "c": 3
-    },
-    "goal": {
-      "r": 0,
-      "c": 4
-    },
-    "yuzus": [
-      {
-        "r": 3,
-        "c": 2
-      }
-    ],
-    "tiles": [
+      },
       {
         "r": 3,
         "c": 1,
-        "type": "rock"
-      },
-      {
-        "r": 3,
-        "c": 4,
-        "type": "rock"
-      },
-      {
-        "r": 2,
-        "c": 0,
-        "type": "rock"
-      },
-      {
-        "r": 1,
-        "c": 3,
-        "type": "rock"
-      },
-      {
-        "r": 1,
-        "c": 4,
         "type": "mud"
       },
       {
-        "r": 4,
+        "r": 1,
         "c": 0,
         "type": "mud"
       }
@@ -329,50 +334,45 @@
       "rows": 5,
       "cols": 5
     },
-    "parMoves": 6,
+    "parMoves": 3,
     "start": {
-      "r": 0,
-      "c": 0
+      "r": 2,
+      "c": 3
     },
     "goal": {
-      "r": 2,
+      "r": 4,
       "c": 1
     },
     "yuzus": [
       {
         "r": 3,
-        "c": 1
+        "c": 0
       }
     ],
     "tiles": [
-      {
-        "r": 4,
-        "c": 4,
-        "type": "rock"
-      },
-      {
-        "r": 1,
-        "c": 2,
-        "type": "rock"
-      },
-      {
-        "r": 3,
-        "c": 4,
-        "type": "rock"
-      },
       {
         "r": 0,
         "c": 3,
         "type": "rock"
       },
       {
-        "r": 2,
-        "c": 4,
+        "r": 3,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 1,
+        "c": 2,
         "type": "mud"
       },
       {
         "r": 3,
-        "c": 0,
+        "c": 4,
+        "type": "mud"
+      },
+      {
+        "r": 4,
+        "c": 3,
         "type": "mud"
       }
     ]
@@ -383,35 +383,25 @@
     "stageNumber": 9,
     "title": "Tepian Kolam",
     "gridSize": {
-      "rows": 6,
-      "cols": 6
+      "rows": 5,
+      "cols": 5
     },
     "parMoves": 5,
     "start": {
-      "r": 5,
-      "c": 5
+      "r": 0,
+      "c": 2
     },
     "goal": {
       "r": 4,
-      "c": 1
+      "c": 3
     },
     "yuzus": [
       {
-        "r": 0,
+        "r": 1,
         "c": 0
       }
     ],
     "tiles": [
-      {
-        "r": 3,
-        "c": 4,
-        "type": "rock"
-      },
-      {
-        "r": 4,
-        "c": 4,
-        "type": "rock"
-      },
       {
         "r": 0,
         "c": 4,
@@ -424,22 +414,17 @@
       },
       {
         "r": 2,
-        "c": 4,
-        "type": "rock"
-      },
-      {
-        "r": 3,
-        "c": 2,
-        "type": "rock"
-      },
-      {
-        "r": 1,
-        "c": 0,
+        "c": 3,
         "type": "mud"
       },
       {
-        "r": 0,
+        "r": 4,
         "c": 1,
+        "type": "mud"
+      },
+      {
+        "r": 3,
+        "c": 0,
         "type": "mud"
       }
     ]
@@ -450,67 +435,48 @@
     "stageNumber": 10,
     "title": "Sore Santai",
     "gridSize": {
-      "rows": 6,
-      "cols": 6
+      "rows": 5,
+      "cols": 5
     },
-    "parMoves": 4,
+    "parMoves": 5,
     "start": {
-      "r": 0,
-      "c": 0
+      "r": 3,
+      "c": 2
     },
     "goal": {
-      "r": 3,
-      "c": 5
+      "r": 1,
+      "c": 1
     },
     "yuzus": [
       {
-        "r": 5,
+        "r": 2,
         "c": 2
-      },
-      {
-        "r": 1,
-        "c": 0
       }
     ],
     "tiles": [
       {
-        "r": 5,
-        "c": 5,
+        "r": 3,
+        "c": 1,
         "type": "rock"
       },
       {
-        "r": 2,
-        "c": 2,
-        "type": "rock"
-      },
-      {
-        "r": 1,
-        "c": 3,
+        "r": 3,
+        "c": 0,
         "type": "rock"
       },
       {
         "r": 1,
-        "c": 5,
-        "type": "rock"
-      },
-      {
-        "r": 1,
-        "c": 2,
-        "type": "rock"
-      },
-      {
-        "r": 2,
         "c": 4,
-        "type": "rock"
-      },
-      {
-        "r": 0,
-        "c": 5,
         "type": "mud"
       },
       {
-        "r": 2,
-        "c": 5,
+        "r": 3,
+        "c": 3,
+        "type": "mud"
+      },
+      {
+        "r": 0,
+        "c": 3,
         "type": "mud"
       }
     ]
@@ -524,64 +490,59 @@
       "rows": 6,
       "cols": 6
     },
-    "parMoves": 12,
+    "parMoves": 4,
     "start": {
-      "r": 1,
-      "c": 3
+      "r": 4,
+      "c": 0
     },
     "goal": {
-      "r": 3,
-      "c": 2
+      "r": 4,
+      "c": 5
     },
     "yuzus": [
       {
         "r": 3,
-        "c": 3
+        "c": 0
       },
       {
-        "r": 1,
-        "c": 5
+        "r": 4,
+        "c": 4
       }
     ],
     "tiles": [
       {
-        "r": 5,
-        "c": 3,
+        "r": 2,
+        "c": 0,
         "type": "rock"
       },
       {
         "r": 4,
-        "c": 5,
+        "c": 1,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 4,
         "type": "rock"
       },
       {
         "r": 3,
-        "c": 4,
+        "c": 5,
         "type": "rock"
       },
       {
-        "r": 2,
+        "r": 5,
         "c": 2,
         "type": "rock"
       },
       {
-        "r": 5,
-        "c": 4,
-        "type": "rock"
-      },
-      {
-        "r": 2,
-        "c": 4,
-        "type": "rock"
-      },
-      {
-        "r": 5,
-        "c": 1,
-        "type": "mud"
-      },
-      {
-        "r": 2,
+        "r": 3,
         "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 5,
+        "c": 4,
         "type": "mud"
       }
     ]
@@ -595,29 +556,34 @@
       "rows": 6,
       "cols": 6
     },
-    "parMoves": 8,
+    "parMoves": 4,
     "start": {
-      "r": 3,
-      "c": 0
+      "r": 4,
+      "c": 5
     },
     "goal": {
-      "r": 3,
-      "c": 4
+      "r": 4,
+      "c": 1
     },
     "yuzus": [
       {
-        "r": 0,
-        "c": 2
+        "r": 5,
+        "c": 4
       },
       {
-        "r": 4,
-        "c": 4
+        "r": 5,
+        "c": 5
       }
     ],
     "tiles": [
       {
-        "r": 4,
-        "c": 1,
+        "r": 2,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 2,
+        "c": 4,
         "type": "rock"
       },
       {
@@ -626,33 +592,23 @@
         "type": "rock"
       },
       {
-        "r": 5,
+        "r": 3,
         "c": 4,
         "type": "rock"
       },
       {
-        "r": 2,
-        "c": 1,
-        "type": "rock"
-      },
-      {
         "r": 3,
-        "c": 3,
-        "type": "rock"
-      },
-      {
-        "r": 5,
-        "c": 1,
+        "c": 0,
         "type": "rock"
       },
       {
         "r": 4,
-        "c": 0,
-        "type": "mud"
+        "c": 4,
+        "type": "rock"
       },
       {
-        "r": 5,
-        "c": 2,
+        "r": 0,
+        "c": 5,
         "type": "mud"
       }
     ]
@@ -668,62 +624,57 @@
     },
     "parMoves": 5,
     "start": {
-      "r": 2,
-      "c": 4
+      "r": 5,
+      "c": 1
     },
     "goal": {
-      "r": 3,
-      "c": 0
+      "r": 4,
+      "c": 5
     },
     "yuzus": [
       {
-        "r": 5,
-        "c": 1
+        "r": 3,
+        "c": 4
       },
       {
-        "r": 4,
-        "c": 1
+        "r": 3,
+        "c": 2
       }
     ],
     "tiles": [
       {
-        "r": 0,
-        "c": 1,
-        "type": "rock"
-      },
-      {
-        "r": 2,
-        "c": 3,
-        "type": "rock"
-      },
-      {
-        "r": 1,
-        "c": 1,
-        "type": "rock"
-      },
-      {
-        "r": 2,
-        "c": 2,
-        "type": "rock"
-      },
-      {
-        "r": 3,
-        "c": 1,
-        "type": "rock"
-      },
-      {
         "r": 5,
-        "c": 0,
+        "c": 3,
         "type": "rock"
       },
       {
         "r": 4,
         "c": 2,
-        "type": "mud"
+        "type": "rock"
       },
       {
-        "r": 2,
+        "r": 1,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 4,
+        "c": 0,
+        "type": "rock"
+      },
+      {
+        "r": 1,
         "c": 5,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 2,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 0,
         "type": "mud"
       }
     ]
@@ -737,64 +688,59 @@
       "rows": 6,
       "cols": 6
     },
-    "parMoves": 7,
+    "parMoves": 4,
     "start": {
-      "r": 1,
+      "r": 0,
       "c": 4
     },
     "goal": {
-      "r": 4,
-      "c": 0
+      "r": 3,
+      "c": 2
     },
     "yuzus": [
       {
-        "r": 4,
-        "c": 1
+        "r": 3,
+        "c": 4
       },
       {
-        "r": 0,
+        "r": 3,
         "c": 3
       }
     ],
     "tiles": [
       {
-        "r": 1,
-        "c": 5,
+        "r": 5,
+        "c": 1,
         "type": "rock"
       },
       {
         "r": 0,
-        "c": 0,
-        "type": "rock"
-      },
-      {
-        "r": 3,
-        "c": 4,
-        "type": "rock"
-      },
-      {
-        "r": 3,
         "c": 5,
         "type": "rock"
       },
       {
-        "r": 3,
-        "c": 0,
+        "r": 5,
+        "c": 5,
         "type": "rock"
       },
       {
-        "r": 0,
-        "c": 4,
-        "type": "rock"
-      },
-      {
-        "r": 1,
+        "r": 5,
         "c": 2,
-        "type": "mud"
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 3,
+        "type": "rock"
       },
       {
         "r": 2,
-        "c": 5,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 0,
+        "c": 2,
         "type": "mud"
       }
     ]
@@ -808,64 +754,49 @@
       "rows": 6,
       "cols": 6
     },
-    "parMoves": 7,
+    "parMoves": 6,
     "start": {
       "r": 0,
-      "c": 1
+      "c": 0
     },
     "goal": {
-      "r": 0,
-      "c": 4
+      "r": 2,
+      "c": 3
     },
     "yuzus": [
       {
-        "r": 3,
-        "c": 2
+        "r": 0,
+        "c": 5
       },
       {
         "r": 5,
-        "c": 1
+        "c": 0
       }
     ],
     "tiles": [
       {
-        "r": 0,
-        "c": 3,
+        "r": 1,
+        "c": 0,
         "type": "rock"
       },
       {
         "r": 2,
-        "c": 2,
-        "type": "rock"
-      },
-      {
-        "r": 3,
-        "c": 5,
-        "type": "rock"
-      },
-      {
-        "r": 5,
         "c": 4,
         "type": "rock"
       },
       {
-        "r": 2,
+        "r": 3,
+        "c": 3,
+        "type": "rock"
+      },
+      {
+        "r": 5,
         "c": 3,
         "type": "rock"
       },
       {
         "r": 4,
         "c": 5,
-        "type": "rock"
-      },
-      {
-        "r": 2,
-        "c": 5,
-        "type": "mud"
-      },
-      {
-        "r": 4,
-        "c": 3,
         "type": "mud"
       }
     ]

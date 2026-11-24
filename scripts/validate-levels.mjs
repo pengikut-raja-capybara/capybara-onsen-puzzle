@@ -27,6 +27,7 @@ function createInitialState(level) {
     capybara: { ...level.start },
     logs: level.tiles.filter((t) => t.type === 'log').map((t) => ({ r: t.r, c: t.c })),
     collectedYuzus: [],
+    brokenIce: [],
     gateOpen: false,
     moves: 0,
     won: false,
@@ -40,13 +41,21 @@ function getStaticTileAt(level, r, c) {
   return null;
 }
 
+function findOtherPortal(level, r, c) {
+  const portals = level.tiles.filter((t) => t.type === 'portal');
+  if (portals.length < 2) return null;
+  const other = portals.find((p) => p.r !== r || p.c !== c);
+  return other ? { r: other.r, c: other.c } : null;
+}
+
 function isInBounds(level, r, c) {
   return r >= 0 && r < level.gridSize.rows && c >= 0 && c < level.gridSize.cols;
 }
 
-function isBlockingTile(tile, gateOpen) {
+function isBlockingTile(tile, gateOpen, isBrokenIce) {
   if (tile === 'rock') return true;
   if (tile === 'gate' && !gateOpen) return true;
+  if (tile === 'ice' && isBrokenIce) return true;
   return false;
 }
 
@@ -57,6 +66,7 @@ function stepMove(level, state, initialDir) {
   let dir = initialDir;
   const logs = state.logs.map((l) => ({ ...l }));
   const collectedSet = new Set(state.collectedYuzus);
+  const brokenIceSet = new Set(state.brokenIce);
   let gateOpen = state.gateOpen;
   let moved = false;
 
@@ -69,25 +79,30 @@ function stepMove(level, state, initialDir) {
 
     if (!isInBounds(level, nr, nc)) break;
     const staticTile = getStaticTileAt(level, nr, nc);
-    if (isBlockingTile(staticTile, gateOpen)) break;
+    const nKey = `${nr},${nc}`;
+    if (isBlockingTile(staticTile, gateOpen, brokenIceSet.has(nKey))) break;
 
     const logIdx = logs.findIndex((l) => l.r === nr && l.c === nc);
     if (logIdx !== -1) {
       const pushR = nr + delta.r;
       const pushC = nc + delta.c;
+      const pushKey = `${pushR},${pushC}`;
       const pushTile = isInBounds(level, pushR, pushC) ? getStaticTileAt(level, pushR, pushC) : null;
       const canPush =
         isInBounds(level, pushR, pushC) &&
-        !isBlockingTile(pushTile, gateOpen) &&
+        !isBlockingTile(pushTile, gateOpen, brokenIceSet.has(pushKey)) &&
         logs.findIndex((l) => l.r === pushR && l.c === pushC) === -1 &&
         !samePos({ r: pushR, c: pushC }, level.goal) &&
-        pushTile !== 'button';
+        pushTile !== 'button' &&
+        pushTile !== 'portal' &&
+        pushTile !== 'ice';
 
       if (canPush) {
         logs[logIdx] = { r: pushR, c: pushC };
         curR = nr;
         curC = nc;
         moved = true;
+        if (staticTile === 'ice') brokenIceSet.add(nKey);
         const yKey = posKey({ r: curR, c: curC });
         if (level.yuzus.some((y) => y.r === curR && y.c === curC)) collectedSet.add(yKey);
         break;
@@ -100,6 +115,8 @@ function stepMove(level, state, initialDir) {
     curC = nc;
     moved = true;
 
+    if (staticTile === 'ice') brokenIceSet.add(nKey);
+
     const yKey = posKey({ r: curR, c: curC });
     if (level.yuzus.some((y) => y.r === curR && y.c === curC)) collectedSet.add(yKey);
 
@@ -109,6 +126,7 @@ function stepMove(level, state, initialDir) {
           capybara: { r: curR, c: curC },
           logs,
           collectedYuzus: Array.from(collectedSet),
+          brokenIce: Array.from(brokenIceSet),
           gateOpen,
           moves: state.moves + 1,
           won: true,
@@ -119,6 +137,20 @@ function stepMove(level, state, initialDir) {
 
     if (staticTile === 'button') gateOpen = true;
     if (staticTile === 'mud') break;
+
+    if (staticTile === 'portal') {
+      const target = findOtherPortal(level, curR, curC);
+      if (target && logs.findIndex((l) => l.r === target.r && l.c === target.c) === -1) {
+        curR = target.r;
+        curC = target.c;
+        const tKey = posKey({ r: curR, c: curC });
+        if (level.yuzus.some((y) => y.r === curR && y.c === curC)) collectedSet.add(tKey);
+        const pk = `${curR},${curC},${dir}`;
+        if (visited.has(pk)) break;
+        visited.add(pk);
+      }
+    }
+
     if (staticTile && STREAM_DIR[staticTile]) {
       dir = STREAM_DIR[staticTile];
       const sk = `${curR},${curC},${dir}`;
@@ -133,6 +165,7 @@ function stepMove(level, state, initialDir) {
       capybara: { r: curR, c: curC },
       logs,
       collectedYuzus: Array.from(collectedSet),
+      brokenIce: Array.from(brokenIceSet),
       gateOpen,
       moves: state.moves + 1,
       won: false,
@@ -142,7 +175,7 @@ function stepMove(level, state, initialDir) {
 }
 
 function serialize(s) {
-  return `${s.capybara.r},${s.capybara.c}|${s.gateOpen ? 1 : 0}|${s.logs.map((l) => `${l.r},${l.c}`).join(';')}|${[...s.collectedYuzus].sort().join(';')}`;
+  return `${s.capybara.r},${s.capybara.c}|${s.gateOpen ? 1 : 0}|${s.logs.map((l) => `${l.r},${l.c}`).join(';')}|${[...s.collectedYuzus].sort().join(';')}|${[...s.brokenIce].sort().join(';')}`;
 }
 
 function solveBFS(level, maxStates = 15000) {
